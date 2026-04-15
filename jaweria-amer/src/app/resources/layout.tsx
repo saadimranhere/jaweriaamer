@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Resources",
   description:
-    "Free vault: past papers, marking schemes, examiner reports, and checklists for CAIE English. Practise with purpose using official-style materials.",
+    "Structured learning hub: general notes, topical worksheets, past papers, examiner reports, and checklists for Cambridge English (O/A Level).",
   alternates: { canonical: "/resources" },
   openGraph: {
     title: "Resources",
     description:
-      "Free vault: past papers, marking schemes, examiner reports, and checklists for CAIE English. Practise with purpose using official-style materials.",
+      "Structured learning hub: general notes, topical worksheets, past papers, examiner reports, and checklists for Cambridge English (O/A Level).",
   },
 };
 
