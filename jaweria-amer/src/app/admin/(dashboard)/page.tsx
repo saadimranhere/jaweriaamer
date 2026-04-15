@@ -1,0 +1,107 @@
+import { BookOpen, FolderOpen, Users, TrendingUp } from "lucide-react";
+import { getCourses, getResources, getLeads } from "@/lib/admin/store";
+import Link from "next/link";
+
+export default async function AdminDashboard() {
+  const [courses, resources, leads] = await Promise.all([
+    getCourses(),
+    getResources(),
+    getLeads(),
+  ]);
+
+  const newLeads = leads.filter((l) => l.status === "new").length;
+  const activeCourses = courses.filter((c) => c.status === "active").length;
+
+  const stats = [
+    { label: "Total Courses", value: courses.length, icon: BookOpen, href: "/admin/courses", color: "bg-blue-50 text-blue-600" },
+    { label: "Active Courses", value: activeCourses, icon: TrendingUp, href: "/admin/courses", color: "bg-green-50 text-green-600" },
+    { label: "Resources", value: resources.length, icon: FolderOpen, href: "/admin/resources", color: "bg-amber-50 text-amber-600" },
+    { label: "New Leads", value: newLeads, icon: Users, href: "/admin/leads", color: "bg-purple-50 text-purple-600" },
+  ];
+
+  return (
+    <div>
+      <div className="mb-8">
+        <h1 className="font-serif text-2xl font-bold text-navy">Dashboard</h1>
+        <p className="text-sm text-slate mt-1">Welcome back, Jaweria. Here&apos;s your overview.</p>
+      </div>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {stats.map((stat) => (
+          <Link
+            key={stat.label}
+            href={stat.href}
+            className="bg-white rounded-xl border border-border/60 p-5 hover:shadow-md transition-shadow"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${stat.color}`}>
+                <stat.icon className="w-5 h-5" />
+              </div>
+            </div>
+            <p className="font-serif text-2xl font-bold text-navy">{stat.value}</p>
+            <p className="text-xs text-slate mt-0.5">{stat.label}</p>
+          </Link>
+        ))}
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6">
+        <div className="bg-white rounded-xl border border-border/60 p-5">
+          <h2 className="font-serif text-lg font-semibold text-navy mb-4">Recent Leads</h2>
+          {leads.length === 0 ? (
+            <div className="text-center py-8">
+              <Users className="w-8 h-8 text-slate-light/50 mx-auto mb-2" />
+              <p className="text-sm text-slate-light">No inquiries yet</p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {leads.slice(0, 5).map((lead) => (
+                <div key={lead.id} className="flex items-center justify-between py-2 border-b border-border/40 last:border-0">
+                  <div>
+                    <p className="text-sm font-medium text-navy">{lead.name}</p>
+                    <p className="text-xs text-slate-light">{lead.email}</p>
+                  </div>
+                  <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                    lead.status === "new" ? "bg-blue-50 text-blue-600" :
+                    lead.status === "contacted" ? "bg-amber-50 text-amber-600" :
+                    "bg-green-50 text-green-600"
+                  }`}>
+                    {lead.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white rounded-xl border border-border/60 p-5">
+          <h2 className="font-serif text-lg font-semibold text-navy mb-4">Courses Overview</h2>
+          {courses.length === 0 ? (
+            <div className="text-center py-8">
+              <BookOpen className="w-8 h-8 text-slate-light/50 mx-auto mb-2" />
+              <p className="text-sm text-slate-light">No courses created yet</p>
+              <Link href="/admin/courses" className="text-xs text-gold hover:text-gold-dark mt-1 inline-block">
+                Create your first course
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {courses.slice(0, 5).map((course) => (
+                <div key={course.id} className="flex items-center justify-between py-2 border-b border-border/40 last:border-0">
+                  <div>
+                    <p className="text-sm font-medium text-navy">{course.title}</p>
+                    <p className="text-xs text-slate-light">{course.level}</p>
+                  </div>
+                  <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                    course.status === "active" ? "bg-green-50 text-green-600" : "bg-slate/10 text-slate"
+                  }`}>
+                    {course.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
