@@ -8,7 +8,9 @@ import {
   Award,
   ChevronRight,
 } from "lucide-react";
+import { listMarketingCourses } from "@/lib/course-offerings";
 import { courses, siteConfig } from "@/lib/data";
+import { getSettings } from "@/lib/admin/store";
 import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { CourseCard } from "@/components/course-card";
@@ -18,8 +20,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-export default function HomePage() {
-  const featuredCourses = courses.filter((c) => c.featured);
+export default async function HomePage() {
+  const featuredCourses = listMarketingCourses(courses).filter((c) => c.featured);
+  const settings = await getSettings();
 
   return (
     <>
@@ -27,16 +30,16 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-36 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-navy" />
+        <div className="absolute inset-0 bg-gradient-to-br from-crimson via-crimson-light to-crimson" />
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-gold text-sm font-medium tracking-[0.2em] uppercase mb-4 sm:mb-6">
-              O/A Level English Specialist
+            <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-4 sm:mb-6">
+              O Level English Specialist
             </p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
               Master CAIE English
-              <span className="block text-gold mt-2">with Clarity and Care</span>
+              <span className="block text-rose mt-2">with Clarity and Care</span>
             </h1>
             <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-xl mb-8 sm:mb-10">
               Rubric-driven instruction, calm accountability, and mentorship
@@ -49,7 +52,7 @@ export default function HomePage() {
                   href={whatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md"
                 >
                   Book a Clarity Call
                   <ArrowRight className="w-4 h-4" />
@@ -79,9 +82,9 @@ export default function HomePage() {
       <section className="bg-white border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {siteConfig.stats.map((stat) => (
+            {settings.stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-serif text-3xl sm:text-4xl font-bold text-navy mb-1">
+                <p className="font-serif text-3xl sm:text-4xl font-bold text-crimson mb-1">
                   {stat.value}
                 </p>
                 <p className="text-sm text-slate">{stat.label}</p>
@@ -95,10 +98,10 @@ export default function HomePage() {
       <section className="py-16 sm:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <p className="text-gold text-sm font-medium tracking-[0.2em] uppercase mb-3">
+            <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
               Why Students Choose Us
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-crimson mb-4">
               Structure, Not Stress
             </h2>
             <p className="text-slate leading-relaxed">
@@ -133,12 +136,12 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="bg-white rounded-xl p-6 border border-border/60 hover:shadow-md hover:border-gold/30 transition-all duration-300"
+                className="bg-white rounded-xl p-6 border border-border/60 hover:shadow-md hover:border-rose/30 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                  <item.icon className="w-5 h-5 text-gold" />
+                <div className="w-10 h-10 rounded-lg bg-rose/10 flex items-center justify-center mb-4">
+                  <item.icon className="w-5 h-5 text-rose" />
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-navy mb-2">
+                <h3 className="font-serif text-lg font-semibold text-crimson mb-2">
                   {item.title}
                 </h3>
                 <p className="text-sm text-slate leading-relaxed">{item.desc}</p>
@@ -153,16 +156,16 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10 sm:mb-14">
             <div>
-              <p className="text-gold text-sm font-medium tracking-[0.2em] uppercase mb-3">
+              <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
                 Programmes
               </p>
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-navy">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-crimson">
                 Featured Courses
               </h2>
             </div>
             <Link
               href="/courses"
-              className="hidden sm:flex items-center gap-1 text-sm text-navy hover:text-gold font-medium transition-colors"
+              className="hidden sm:flex items-center gap-1 text-sm text-crimson hover:text-rose font-medium transition-colors"
             >
               View All
               <ChevronRight className="w-4 h-4" />
@@ -178,7 +181,7 @@ export default function HomePage() {
           <div className="sm:hidden mt-8 text-center">
             <Link
               href="/courses"
-              className="inline-flex items-center gap-1 text-sm text-navy hover:text-gold font-medium transition-colors"
+              className="inline-flex items-center gap-1 text-sm text-crimson hover:text-rose font-medium transition-colors"
             >
               View All Courses
               <ChevronRight className="w-4 h-4" />
@@ -191,10 +194,10 @@ export default function HomePage() {
       <section className="py-16 sm:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <p className="text-gold text-sm font-medium tracking-[0.2em] uppercase mb-3">
+            <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
               The Method
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-crimson mb-4">
               Your Step-by-Step Roadmap
             </h2>
             <p className="text-slate leading-relaxed">
@@ -208,11 +211,11 @@ export default function HomePage() {
             <div className="space-y-8 sm:space-y-10">
               {siteConfig.roadmap.map((step) => (
                 <div key={step.step} className="relative flex gap-5 sm:gap-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-navy text-white flex items-center justify-center font-serif font-bold text-sm sm:text-base shrink-0 z-10">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-crimson text-white flex items-center justify-center font-serif font-bold text-sm sm:text-base shrink-0 z-10">
                     {step.step}
                   </div>
                   <div className="pt-1 sm:pt-2">
-                    <h3 className="font-serif text-lg sm:text-xl font-semibold text-navy mb-1.5">
+                    <h3 className="font-serif text-lg sm:text-xl font-semibold text-crimson mb-1.5">
                       {step.title}
                     </h3>
                     <p className="text-sm text-slate leading-relaxed">
@@ -227,7 +230,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 bg-navy">
+      <section className="py-16 sm:py-24 bg-crimson">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Ready to Build a Clear Plan?
@@ -245,7 +248,7 @@ export default function HomePage() {
               href={whatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md sm:w-auto"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md sm:w-auto"
             >
               Book a Clarity Call
               <ArrowRight className="w-4 h-4" />

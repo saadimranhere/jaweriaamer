@@ -16,7 +16,7 @@ export function WorkshopPromoSection() {
         <div className="relative aspect-video w-full">
           <Image
             src="/images/workshop-banner.jpg"
-            alt="Miss Jay O and A Level English Workshop — 5 to 7 day online and physical programme, syllabus revision, mock exams, and contact details on banner"
+            alt="Miss Jay O Level English Workshop — 5 to 7 day online and physical programme, syllabus revision, mock exams, and contact details on banner"
             fill
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1280px"
@@ -33,7 +33,7 @@ export function WorkshopPromoSection() {
       >
         <h2
           id="workshop-reserve-heading"
-          className="font-serif text-2xl font-bold tracking-tight text-navy sm:text-3xl"
+          className="font-serif text-2xl font-bold tracking-tight text-crimson sm:text-3xl"
         >
           Reserve Your Spot
         </h2>

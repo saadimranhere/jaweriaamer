@@ -5,10 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import type { Course } from "@/lib/data";
 
 const categoryColors: Record<string, string> = {
-  "o-level": "bg-navy/10 text-navy",
-  "a-level": "bg-gold/15 text-gold-dark",
+  "o-level": "bg-crimson/10 text-crimson",
+  "a-level": "bg-rose/15 text-rose-dark",
   literature: "bg-brand-soft/90 text-brand",
-  "creative-writing": "bg-navy-light/10 text-navy-light",
+  "creative-writing": "bg-crimson-light/10 text-crimson-light",
 };
 
 export function CourseCard({ course }: { course: Course }) {
@@ -22,12 +22,12 @@ export function CourseCard({ course }: { course: Course }) {
           >
             {course.categoryLabel}
           </Badge>
-          <span className="text-lg font-serif font-semibold text-navy">
+          <span className="text-lg font-serif font-semibold text-crimson">
             {course.price}
           </span>
         </div>
 
-        <h3 className="font-serif text-xl font-semibold text-navy mb-1">
+        <h3 className="font-serif text-xl font-semibold text-crimson mb-1">
           {course.title}
         </h3>
         <p className="text-xs text-slate-light mb-3">{course.subtitle}</p>
@@ -49,7 +49,7 @@ export function CourseCard({ course }: { course: Course }) {
 
         <Link
           href={`/courses/${course.id}`}
-          className="flex items-center justify-center gap-2 w-full rounded-xl bg-navy py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-navy-light group-hover:bg-brand-accent group-hover:shadow-md group-hover:text-white"
+          className="flex items-center justify-center gap-2 w-full rounded-xl bg-crimson py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose group-hover:shadow-md"
         >
           View Syllabus
           <ArrowRight className="w-4 h-4" />

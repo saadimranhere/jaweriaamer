@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "description": "Jaweria Amer Academy — Next.js marketing site and admin for Cambridge O/A Level English programmes.",
+  "description": "Jaweria Amer Academy — Next.js marketing site and admin for Cambridge O Level English programmes.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

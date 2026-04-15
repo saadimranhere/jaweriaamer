@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <section className="bg-navy pt-28 pb-10 sm:pt-36 sm:pb-12">
+      <section className="bg-crimson pt-28 pb-10 sm:pt-36 sm:pb-12">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-gold">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-rose">
             Legal
           </p>
           <h1 className="font-serif text-3xl font-bold text-white sm:text-4xl">
@@ -32,7 +32,7 @@ export default function TermsPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="max-w-none space-y-10 text-slate">
             <section>
-              <h2 className="font-serif text-lg font-semibold text-navy">
+              <h2 className="font-serif text-lg font-semibold text-crimson">
                 Usage
               </h2>
               <p className="mt-3 text-sm leading-relaxed sm:text-base">
@@ -42,7 +42,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-serif text-lg font-semibold text-navy">
+              <h2 className="font-serif text-lg font-semibold text-crimson">
                 Copyright
               </h2>
               <p className="mt-3 text-sm leading-relaxed sm:text-base">
@@ -53,7 +53,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-serif text-lg font-semibold text-navy">
+              <h2 className="font-serif text-lg font-semibold text-crimson">
                 Privacy
               </h2>
               <p className="mt-3 text-sm leading-relaxed sm:text-base">
@@ -64,7 +64,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-serif text-lg font-semibold text-navy">
+              <h2 className="font-serif text-lg font-semibold text-crimson">
                 Contact
               </h2>
               <p className="mt-3 text-sm leading-relaxed sm:text-base">
@@ -75,7 +75,7 @@ export default function TermsPage() {
 
           <Link
             href="/"
-            className="mt-12 inline-flex items-center gap-2 text-sm font-medium text-navy transition-colors hover:text-gold"
+            className="mt-12 inline-flex items-center gap-2 text-sm font-medium text-crimson transition-colors hover:text-rose"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Back to Home

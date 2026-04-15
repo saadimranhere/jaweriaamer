@@ -1,24 +1,37 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, Suspense } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import { loginAction } from "@/lib/admin/actions";
 import { contact } from "@/lib/contact";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
+function PasswordResetToast() {
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    if (searchParams.get("reset") === "1") {
+      toast.success("Password updated. Sign in with your new password.", { id: "admin-password-reset-done" });
+    }
+  }, [searchParams]);
+  return null;
+}
+
 export default function LoginPage() {
   const [state, action, pending] = useActionState(loginAction, null);
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="min-h-screen bg-navy flex items-center justify-center px-4">
+    <div className="min-h-screen bg-crimson flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-xl bg-gold/20 flex items-center justify-center mx-auto mb-4">
-            <Lock className="w-7 h-7 text-gold" />
+          <div className="w-14 h-14 rounded-xl bg-rose/20 flex items-center justify-center mx-auto mb-4">
+            <Lock className="w-7 h-7 text-rose" />
           </div>
           <h1 className="font-serif text-2xl font-bold text-white">Admin Portal</h1>
           <p className="text-white/50 text-sm mt-1">Jaweria Amer - English Specialist</p>
@@ -32,7 +45,7 @@ export default function LoginPage() {
           )}
 
           <div className="space-y-1.5">
-            <Label htmlFor="email" className="text-sm font-medium text-navy">Email</Label>
+            <Label htmlFor="email" className="text-sm font-medium text-crimson">Email</Label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-light" />
               <Input
@@ -47,7 +60,7 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="password" className="text-sm font-medium text-navy">Password</Label>
+            <Label htmlFor="password" className="text-sm font-medium text-crimson">Password</Label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-light" />
               <Input
@@ -61,17 +74,30 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-navy"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-crimson"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
           </div>
 
-          <Button type="submit" disabled={pending} className="w-full bg-navy hover:bg-navy-light text-white">
+          <div className="flex justify-end -mt-1">
+            <Link
+              href="/admin/forgot-password"
+              className="text-xs font-medium text-crimson/60 hover:text-crimson underline-offset-2 hover:underline"
+            >
+              Forgot password?
+            </Link>
+          </div>
+
+          <Button type="submit" disabled={pending} className="w-full bg-crimson hover:bg-rose text-white">
             {pending ? "Signing in..." : "Sign In"}
           </Button>
         </form>
+
+        <Suspense fallback={null}>
+          <PasswordResetToast />
+        </Suspense>
 
         <p className="text-center text-white/30 text-xs mt-6">
           Protected admin area. Unauthorized access is prohibited.

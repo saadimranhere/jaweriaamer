@@ -14,27 +14,27 @@ import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Jaweria Amer. Cambridge English mentor focused on rubric-driven practice, examiner-aligned feedback, and calm mentorship for O/A Level students.",
+    "Meet Jaweria Amer. Cambridge English mentor focused on rubric-driven practice, examiner-aligned feedback, and calm mentorship for O Level students.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About",
     description:
-      "Meet Jaweria Amer. Cambridge English mentor focused on rubric-driven practice, examiner-aligned feedback, and calm mentorship for O/A Level students.",
+      "Meet Jaweria Amer. Cambridge English mentor focused on rubric-driven practice, examiner-aligned feedback, and calm mentorship for O Level students.",
   },
   twitter: {
     card: "summary_large_image",
     title: "About",
     description:
-      "Meet Jaweria Amer. Cambridge English mentor focused on rubric-driven practice, examiner-aligned feedback, and calm mentorship for O/A Level students.",
+      "Meet Jaweria Amer. Cambridge English mentor focused on rubric-driven practice, examiner-aligned feedback, and calm mentorship for O Level students.",
   },
 };
 
 export default function AboutPage() {
   return (
     <>
-      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-navy">
+      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-crimson">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-gold text-sm font-medium tracking-[0.2em] uppercase mb-3">
+          <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
             About
           </p>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -53,18 +53,18 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
             {/* Portrait placeholder */}
             <div className="lg:col-span-2">
-              <div className="aspect-[3/4] bg-navy/5 rounded-2xl border border-border/60 flex items-center justify-center">
+              <div className="aspect-[3/4] bg-crimson/5 rounded-2xl border border-border/60 flex items-center justify-center">
                 <div className="text-center px-8">
-                  <div className="w-24 h-24 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
-                    <span className="font-serif text-3xl font-bold text-navy">
+                  <div className="w-24 h-24 rounded-full bg-crimson/10 flex items-center justify-center mx-auto mb-4">
+                    <span className="font-serif text-3xl font-bold text-crimson">
                       JA
                     </span>
                   </div>
-                  <p className="font-serif text-lg font-semibold text-navy">
+                  <p className="font-serif text-lg font-semibold text-crimson">
                     Jaweria Amer
                   </p>
                   <p className="text-xs text-slate-light tracking-wider uppercase mt-1">
-                    O/A Level English Specialist
+                    O Level English Specialist
                   </p>
                 </div>
               </div>
@@ -73,7 +73,7 @@ export default function AboutPage() {
             {/* Bio */}
             <div className="lg:col-span-3 space-y-8">
               <div>
-                <h2 className="font-serif text-2xl font-bold text-navy mb-4">
+                <h2 className="font-serif text-2xl font-bold text-crimson mb-4">
                   Teaching Philosophy
                 </h2>
                 <div className="space-y-4 text-slate leading-relaxed">
@@ -127,8 +127,8 @@ export default function AboutPage() {
                     key={item.title}
                     className="bg-white rounded-xl p-5 border border-border/60"
                   >
-                    <item.icon className="w-5 h-5 text-gold mb-3" />
-                    <h3 className="font-serif text-sm font-semibold text-navy mb-1.5">
+                    <item.icon className="w-5 h-5 text-rose mb-3" />
+                    <h3 className="font-serif text-sm font-semibold text-crimson mb-1.5">
                       {item.title}
                     </h3>
                     <p className="text-xs text-slate leading-relaxed">
@@ -139,7 +139,7 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <h2 className="font-serif text-2xl font-bold text-navy mb-4">
+                <h2 className="font-serif text-2xl font-bold text-crimson mb-4">
                   What Sets This Apart
                 </h2>
                 <div className="space-y-3">
@@ -152,7 +152,7 @@ export default function AboutPage() {
                     "No grade guarantees, no inflated claims. Just honest, consistent work",
                   ].map((item) => (
                     <div key={item} className="flex gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-rose shrink-0 mt-0.5" />
                       <span className="text-sm text-slate">{item}</span>
                     </div>
                   ))}
@@ -164,7 +164,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-20 bg-navy">
+      <section className="py-16 sm:py-20 bg-crimson">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">
             Let&apos;s Start with a Conversation
@@ -182,7 +182,7 @@ export default function AboutPage() {
               href={whatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md sm:w-auto"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md sm:w-auto"
             >
               Book a Clarity Call
               <ArrowRight className="w-4 h-4" />

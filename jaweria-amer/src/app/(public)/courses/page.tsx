@@ -4,37 +4,35 @@ import { useState } from "react";
 import { courses } from "@/lib/data";
 import { CourseCard } from "@/components/course-card";
 import { cn } from "@/lib/utils";
-
-const categories = [
-  { value: "all", label: "All Programmes" },
-  { value: "o-level", label: "O Level" },
-  { value: "a-level", label: "A Level" },
-  { value: "literature", label: "Literature" },
-  { value: "creative-writing", label: "Creative Writing" },
-];
+import {
+  listMarketingCourses,
+  MARKETING_COURSE_FILTER_CHIPS,
+  type MarketingCourseFilterValue,
+} from "@/lib/course-offerings";
 
 export default function CoursesPage() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState<MarketingCourseFilterValue>("all");
+
+  const marketingCourses = listMarketingCourses(courses);
 
   const filtered =
     activeCategory === "all"
-      ? courses
-      : courses.filter((c) => c.category === activeCategory);
+      ? marketingCourses
+      : marketingCourses.filter((c) => c.category === activeCategory);
 
   return (
     <>
-      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-navy">
+      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-crimson">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-gold text-sm font-medium tracking-[0.2em] uppercase mb-3">
+          <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
             Programmes
           </p>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Course Directory
           </h1>
           <p className="text-white/60 max-w-xl leading-relaxed">
-            Structured programmes for Cambridge O Level, A Level, Literature,
-            and Creative Writing. Each course is rubric-aligned and
-            feedback-driven.
+            Structured programmes for Cambridge O Level, Literature, and Creative Writing. Each course is
+            rubric-aligned and feedback-driven.
           </p>
         </div>
       </section>
@@ -42,15 +40,15 @@ export default function CoursesPage() {
       <section className="py-12 sm:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2 mb-10">
-            {categories.map((cat) => (
+            {MARKETING_COURSE_FILTER_CHIPS.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => setActiveCategory(cat.value)}
                 className={cn(
                   "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                   activeCategory === cat.value
-                    ? "bg-navy text-white"
-                    : "bg-white text-slate hover:bg-navy/5 border border-border/60"
+                    ? "bg-crimson text-white"
+                    : "bg-white text-slate hover:bg-crimson/5 border border-border/60"
                 )}
               >
                 {cat.label}

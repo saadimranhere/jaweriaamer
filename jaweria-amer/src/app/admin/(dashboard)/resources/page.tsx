@@ -28,6 +28,8 @@ const categoryLabels: Record<string, string> = {
   "notes": "Notes",
   "marking-scheme": "Marking Scheme",
   "examiner-report": "Examiner Report",
+  "worksheet": "Worksheet",
+  "checklist": "Checklist",
 };
 
 export default function ResourcesPage() {
@@ -84,20 +86,21 @@ export default function ResourcesPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-navy">Resource Vault</h1>
+          <h1 className="font-serif text-2xl font-bold text-crimson">Resource Vault</h1>
           <p className="text-sm text-slate mt-1">Upload and manage PDFs and documents</p>
         </div>
-        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <div className="flex shrink-0 items-center gap-2">
           <Button
             type="button"
-            className="bg-navy hover:bg-navy-light text-white gap-2"
+            className="bg-crimson hover:bg-rose text-white gap-2"
             onClick={() => setDialogOpen(true)}
           >
             <Plus className="w-4 h-4" /> Upload Resource
           </Button>
-          <DialogContent className="bg-white max-w-md">
+          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <DialogContent className="bg-white max-w-md">
             <DialogHeader>
-              <DialogTitle className="font-serif text-lg text-navy">Upload Resource</DialogTitle>
+              <DialogTitle className="font-serif text-lg text-crimson">Upload Resource</DialogTitle>
             </DialogHeader>
             <form action={formAction} className="space-y-4">
               <input type="hidden" name="fileName" value={fileName} />
@@ -121,6 +124,8 @@ export default function ResourcesPage() {
                   <option value="notes">Notes</option>
                   <option value="marking-scheme">Marking Scheme</option>
                   <option value="examiner-report">Examiner Report</option>
+                  <option value="worksheet">Worksheet</option>
+                  <option value="checklist">Checklist</option>
                 </select>
               </div>
 
@@ -140,13 +145,14 @@ export default function ResourcesPage() {
 
               <div className="flex gap-3 pt-2">
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)} className="flex-1">Cancel</Button>
-                <Button type="submit" disabled={formPending || !fileName} className="flex-1 bg-navy hover:bg-navy-light text-white">
+                <Button type="submit" disabled={formPending || !fileName} className="flex-1 bg-crimson hover:bg-rose text-white">
                   {formPending ? "Uploading..." : "Upload"}
                 </Button>
               </div>
             </form>
-          </DialogContent>
-        </Dialog>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
 
       <div className="overflow-hidden rounded-xl border border-border/60 bg-white shadow-sm">
@@ -155,9 +161,9 @@ export default function ResourcesPage() {
         ) : resources.length === 0 ? (
           <div className="p-12 text-center">
             <FolderOpen className="w-10 h-10 text-slate-light/40 mx-auto mb-3" />
-            <p className="text-sm font-medium text-navy mb-1">No resources uploaded</p>
+            <p className="text-sm font-medium text-crimson mb-1">No resources uploaded</p>
             <p className="text-xs text-slate-light mb-4">Upload past papers, notes, and marking schemes.</p>
-            <Button onClick={() => setDialogOpen(true)} className="bg-navy hover:bg-navy-light text-white gap-2">
+            <Button onClick={() => setDialogOpen(true)} className="bg-crimson hover:bg-rose text-white gap-2">
               <Plus className="w-4 h-4" /> Upload Resource
             </Button>
           </div>
@@ -175,7 +181,7 @@ export default function ResourcesPage() {
             <TableBody>
               {resources.map((resource) => (
                 <TableRow key={resource.id}>
-                  <TableCell className="font-medium text-navy">
+                  <TableCell className="font-medium text-crimson">
                     <div className="flex items-center gap-2">
                       <FileText className="w-4 h-4 text-slate-light" />
                       {resource.title}

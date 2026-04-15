@@ -9,6 +9,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { courses } from "@/lib/data";
+import { isCourseCategoryOffered, listMarketingCourses } from "@/lib/course-offerings";
 import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { Badge } from "@/components/ui/badge";
@@ -20,22 +21,22 @@ import {
 } from "@/components/ui/accordion";
 
 const categoryColors: Record<string, string> = {
-  "o-level": "bg-navy/10 text-navy",
-  "a-level": "bg-gold/15 text-gold-dark",
+  "o-level": "bg-crimson/10 text-crimson",
+  "a-level": "bg-rose/15 text-rose-dark",
   literature: "bg-brand-soft/90 text-brand",
-  "creative-writing": "bg-navy-light/10 text-navy-light",
+  "creative-writing": "bg-crimson-light/10 text-crimson-light",
 };
 
 type Params = Promise<{ id: string }>;
 
 export async function generateStaticParams() {
-  return courses.map((course) => ({ id: course.id }));
+  return listMarketingCourses(courses).map((course) => ({ id: course.id }));
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;
   const course = courses.find((c) => c.id === id);
-  if (!course) return {};
+  if (!course || !isCourseCategoryOffered(course.category)) return {};
   return {
     title: course.title,
     description: course.description,
@@ -58,12 +59,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default async function CourseDetailPage({ params }: { params: Params }) {
   const { id } = await params;
   const course = courses.find((c) => c.id === id);
-  if (!course) notFound();
+  if (!course || !isCourseCategoryOffered(course.category)) notFound();
 
   return (
     <>
       {/* Header */}
-      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-navy">
+      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-crimson">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/courses"
@@ -96,13 +97,13 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
           <div className="lg:col-span-2 space-y-12">
             {/* What You Will Learn */}
             <div>
-              <h2 className="font-serif text-2xl font-bold text-navy mb-6">
+              <h2 className="font-serif text-2xl font-bold text-crimson mb-6">
                 What You Will Learn
               </h2>
               <div className="space-y-3">
                 {course.outcomes.map((outcome) => (
                   <div key={outcome} className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-rose shrink-0 mt-0.5" />
                     <span className="text-slate text-sm leading-relaxed">
                       {outcome}
                     </span>
@@ -113,14 +114,14 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
             {/* Syllabus Overview */}
             <div>
-              <h2 className="font-serif text-2xl font-bold text-navy mb-6">
+              <h2 className="font-serif text-2xl font-bold text-crimson mb-6">
                 Syllabus Coverage
               </h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {course.syllabus.map((item) => (
                   <div
                     key={item}
-                    className="bg-cream rounded-lg px-4 py-3 text-sm text-navy border border-border/40"
+                    className="bg-cream rounded-lg px-4 py-3 text-sm text-crimson border border-border/40"
                   >
                     {item}
                   </div>
@@ -130,7 +131,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
             {/* Curriculum Accordion */}
             <div>
-              <h2 className="font-serif text-2xl font-bold text-navy mb-6">
+              <h2 className="font-serif text-2xl font-bold text-crimson mb-6">
                 Curriculum
               </h2>
               <Accordion className="space-y-3">
@@ -140,9 +141,9 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                     value={`module-${i}`}
                     className="bg-white rounded-lg border border-border/60 px-5 overflow-hidden"
                   >
-                    <AccordionTrigger className="text-sm font-medium text-navy hover:no-underline py-4">
+                    <AccordionTrigger className="text-sm font-medium text-crimson hover:no-underline py-4">
                       <span className="flex items-center gap-3">
-                        <span className="w-7 h-7 rounded-full bg-navy/5 flex items-center justify-center text-xs font-semibold text-navy shrink-0">
+                        <span className="w-7 h-7 rounded-full bg-crimson/5 flex items-center justify-center text-xs font-semibold text-crimson shrink-0">
                           {i + 1}
                         </span>
                         {module.title}
@@ -155,7 +156,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                             key={topic}
                             className="text-sm text-slate flex items-start gap-2"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-rose shrink-0 mt-1.5" />
                             {topic}
                           </li>
                         ))}
@@ -171,7 +172,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
           <div>
             <div className="sticky top-24 bg-white rounded-xl border border-border/60 p-6 space-y-6">
               <div>
-                <p className="font-serif text-3xl font-bold text-navy">
+                <p className="font-serif text-3xl font-bold text-crimson">
                   {course.price}
                 </p>
                 <p className="text-xs text-slate-light mt-1">
@@ -181,11 +182,11 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-2 text-slate">
-                  <Clock className="w-4 h-4 text-gold" />
+                  <Clock className="w-4 h-4 text-rose" />
                   {course.duration}
                 </div>
                 <div className="flex items-center gap-2 text-slate">
-                  <CalendarDays className="w-4 h-4 text-gold" />
+                  <CalendarDays className="w-4 h-4 text-rose" />
                   {course.schedule}
                 </div>
               </div>
@@ -197,7 +198,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gold py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-rose py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md"
                 >
                   Enrol via WhatsApp
                   <ArrowRight className="w-4 h-4" />
@@ -206,7 +207,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                   href={whatsAppGroupUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-navy/15 bg-white py-3 text-sm font-medium text-navy shadow-sm transition-all hover:border-gold/40 hover:bg-cream/60"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-crimson/15 bg-white py-3 text-sm font-medium text-crimson shadow-sm transition-all hover:border-rose/40 hover:bg-cream/60"
                 >
                   Join WhatsApp group
                 </Link>

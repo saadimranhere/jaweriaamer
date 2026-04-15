@@ -1,6 +1,11 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getSessionSecret } from "@/lib/session-secret";
+import { verifyAdminPassword } from "./password-store";
+
+export function normalizeAdminEmail(email: string): string {
+  return email.trim().toLowerCase();
+}
 
 const SESSION_COOKIE = "ja_admin_session";
 const SESSION_MAX_AGE = 60 * 60 * 24; // 24 hours
@@ -22,10 +27,12 @@ function verifyToken(token: string): boolean {
 }
 
 export async function login(email: string, password: string): Promise<{ success: boolean; error?: string }> {
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const adminPassword = process.env.ADMIN_PASSWORD;
+  const adminEmail = process.env.ADMIN_EMAIL?.trim();
+  if (!adminEmail || normalizeAdminEmail(email) !== normalizeAdminEmail(adminEmail)) {
+    return { success: false, error: "Invalid credentials" };
+  }
 
-  if (email !== adminEmail || password !== adminPassword) {
+  if (!(await verifyAdminPassword(password))) {
     return { success: false, error: "Invalid credentials" };
   }
 

@@ -1,10 +1,11 @@
 import { contact } from "./contact";
+import type { CourseCategory } from "./course-offerings";
 
 export interface Course {
   id: string;
   title: string;
   subtitle: string;
-  category: "o-level" | "a-level" | "literature" | "creative-writing";
+  category: CourseCategory;
   categoryLabel: string;
   price: string;
   duration: string;
@@ -1416,9 +1417,9 @@ export const resources: Resource[] = [
 
 export const siteConfig = {
   name: "Jaweria Amer",
-  title: "Jaweria Amer - O/A Level English Specialist",
+  title: "Jaweria Amer - O Level English Specialist",
   description:
-    "Rubric-driven Cambridge O/A Level English tutoring in Karachi. Structured practice, precise feedback, and mentorship that builds independent thinkers.",
+    "Rubric-driven Cambridge O Level English tutoring in Karachi. Structured practice, precise feedback, and mentorship that builds independent thinkers.",
   tagline: "Master CAIE English with Clarity and Care",
   whatsappNumber: contact.whatsapp,
   whatsappMessage: contact.messageDefault,

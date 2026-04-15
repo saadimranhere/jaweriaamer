@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dialog";
 import { saveCourseAction, deleteCourseAction } from "@/lib/admin/actions";
 import type { AdminCourse } from "@/lib/admin/store";
+import { getAdminCourseLevelSelectOptions } from "@/lib/course-offerings";
 
 export default function CoursesPage() {
   const [courses, setCourses] = useState<AdminCourse[]>([]);
@@ -70,20 +71,21 @@ export default function CoursesPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-navy">Courses</h1>
+          <h1 className="font-serif text-2xl font-bold text-crimson">Courses</h1>
           <p className="text-sm text-slate mt-1">Manage your course catalogue</p>
         </div>
-        <Dialog open={dialogOpen} onOpenChange={(open) => { setDialogOpen(open); if (!open) setEditingCourse(null); }}>
+        <div className="flex shrink-0 items-center gap-2">
           <Button
             type="button"
             onClick={openNew}
-            className="bg-navy hover:bg-navy-light text-white gap-2"
+            className="bg-crimson hover:bg-rose text-white gap-2"
           >
             <Plus className="w-4 h-4" /> Add Course
           </Button>
-          <DialogContent className="bg-white max-w-md">
+          <Dialog open={dialogOpen} onOpenChange={(open) => { setDialogOpen(open); if (!open) setEditingCourse(null); }}>
+            <DialogContent className="bg-white max-w-md">
             <DialogHeader>
-              <DialogTitle className="font-serif text-lg text-navy">
+              <DialogTitle className="font-serif text-lg text-crimson">
                 {editingCourse ? "Edit Course" : "New Course"}
               </DialogTitle>
             </DialogHeader>
@@ -109,10 +111,11 @@ export default function CoursesPage() {
                   defaultValue={editingCourse?.level || "O Level"}
                   className="w-full rounded-xl border border-input bg-white px-3 py-2 text-sm shadow-sm focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
                 >
-                  <option>O Level</option>
-                  <option>A Level</option>
-                  <option>Literature</option>
-                  <option>Creative Writing</option>
+                  {getAdminCourseLevelSelectOptions(editingCourse?.level).map((level) => (
+                    <option key={level} value={level}>
+                      {level}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -134,15 +137,27 @@ export default function CoursesPage() {
                 </select>
               </div>
 
+              <div className="space-y-1.5">
+                <Label htmlFor="syllabusFile">Syllabus PDF (optional)</Label>
+                <Input
+                  id="syllabusFile"
+                  name="syllabusFile"
+                  placeholder="e.g. o-level-1123-syllabus.pdf"
+                  defaultValue={editingCourse?.syllabusFile || ""}
+                />
+                <p className="text-xs text-slate-light">Filename of the PDF in /resources/</p>
+              </div>
+
               <div className="flex gap-3 pt-2">
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)} className="flex-1">Cancel</Button>
-                <Button type="submit" disabled={formPending} className="flex-1 bg-navy hover:bg-navy-light text-white">
+                <Button type="submit" disabled={formPending} className="flex-1 bg-crimson hover:bg-rose text-white">
                   {formPending ? "Saving..." : "Save Course"}
                 </Button>
               </div>
             </form>
-          </DialogContent>
-        </Dialog>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
 
       <div className="overflow-hidden rounded-xl border border-border/60 bg-white shadow-sm">
@@ -151,9 +166,9 @@ export default function CoursesPage() {
         ) : courses.length === 0 ? (
           <div className="p-12 text-center">
             <BookOpen className="w-10 h-10 text-slate-light/40 mx-auto mb-3" />
-            <p className="text-sm font-medium text-navy mb-1">No courses found</p>
+            <p className="text-sm font-medium text-crimson mb-1">No courses found</p>
             <p className="text-xs text-slate-light mb-4">Create your first course to get started.</p>
-            <Button onClick={openNew} className="bg-navy hover:bg-navy-light text-white gap-2">
+            <Button onClick={openNew} className="bg-crimson hover:bg-rose text-white gap-2">
               <Plus className="w-4 h-4" /> Add Course
             </Button>
           </div>
@@ -171,7 +186,7 @@ export default function CoursesPage() {
             <TableBody>
               {courses.map((course) => (
                 <TableRow key={course.id}>
-                  <TableCell className="font-medium text-navy">{course.title}</TableCell>
+                  <TableCell className="font-medium text-crimson">{course.title}</TableCell>
                   <TableCell className="text-slate">{course.level}</TableCell>
                   <TableCell className="text-slate">PKR {course.price.toLocaleString()}</TableCell>
                   <TableCell>
@@ -185,7 +200,7 @@ export default function CoursesPage() {
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-1">
-                      <button onClick={() => openEdit(course)} className="p-1.5 text-slate hover:text-navy rounded hover:bg-slate/10 transition-colors">
+                      <button onClick={() => openEdit(course)} className="p-1.5 text-slate hover:text-crimson rounded hover:bg-slate/10 transition-colors">
                         <Pencil className="w-3.5 h-3.5" />
                       </button>
                       <button

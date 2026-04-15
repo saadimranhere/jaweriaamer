@@ -18,21 +18,21 @@ function InstagramGlyph(props: SVGProps<SVGSVGElement>) {
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white/75">
+    <footer className="bg-crimson text-white/75">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div className="space-y-4">
             <Link href="/" className="group inline-block">
-              <p className="font-serif text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-gold">
+              <p className="font-serif text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-rose">
                 {siteConfig.name}
               </p>
               <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-white/45">
-                O/A Level English Specialist
+                O Level English Specialist
               </p>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-white/65">
               Rubric-driven Cambridge English mentorship that builds clarity,
-              examiner-aligned skill, and independent thinking for O/A Level
+              examiner-aligned skill, and independent thinking for O Level
               students.
             </p>
           </div>
@@ -46,7 +46,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/70 transition-colors hover:text-gold"
+                    className="text-sm text-white/70 transition-colors hover:text-rose"
                   >
                     {item.label}
                   </Link>
@@ -61,15 +61,15 @@ export function Footer() {
             </h2>
             <ul className="space-y-4 text-sm">
               <li className="inline-flex items-start gap-2.5 text-sm">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-rose" aria-hidden />
                 <ContactEmailLink variant="onDark" />
               </li>
               <li>
                 <a
                   href={telUrl()}
-                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-gold"
+                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-rose"
                 >
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-rose" />
                   <span>{contact.phone}</span>
                 </a>
               </li>
@@ -78,9 +78,9 @@ export function Footer() {
                   href={whatsappDirectHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-gold"
+                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-rose"
                 >
-                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
+                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose" aria-hidden />
                   <span>Message on WhatsApp</span>
                 </a>
               </li>
@@ -89,9 +89,9 @@ export function Footer() {
                   href={whatsappGroupHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-gold"
+                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-rose"
                 >
-                  <UsersRound className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
+                  <UsersRound className="mt-0.5 h-4 w-4 shrink-0 text-rose" aria-hidden />
                   <span>WhatsApp community</span>
                 </a>
               </li>
@@ -100,14 +100,14 @@ export function Footer() {
                   href={contact.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-gold"
+                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-rose"
                 >
-                  <PlayCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
+                  <PlayCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose" aria-hidden />
                   <span>YouTube — English with Jaweria</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-white/70">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-rose" />
                 <span>{contact.locationLine}</span>
               </li>
             </ul>
@@ -121,7 +121,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-sm text-white/70 transition-colors hover:text-gold"
+                  className="text-sm text-white/70 transition-colors hover:text-rose"
                 >
                   Terms of Service
                 </Link>
@@ -129,7 +129,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-sm text-white/70 transition-colors hover:text-gold"
+                  className="text-sm text-white/70 transition-colors hover:text-rose"
                 >
                   Privacy Policy
                 </Link>
@@ -139,7 +139,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-navy-dark/80">
+      <div className="border-t border-white/10 bg-crimson-dark/80">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-center text-xs text-white/50 sm:text-left">
@@ -149,14 +149,14 @@ export function Footer() {
               href={contact.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-gold/50 hover:text-gold"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-rose/50 hover:text-rose"
               aria-label="English with Jaweria on Instagram"
             >
               <InstagramGlyph className="h-5 w-5" />
             </a>
           </div>
-          <p className="mt-4 max-w-4xl text-center text-[11px] leading-relaxed text-white/40 sm:text-left">
-            CAIE™, O Level™, and A Level™ are trademarks of Cambridge
+          <p className="mt-4 max-w-4xl text-center text-[11px] leading-relaxed text-[rgb(200,160,165)]/95 sm:text-left">
+            CAIE™ and O Level™ are trademarks of Cambridge
             Assessment International Education. This site is not affiliated
             with or endorsed by Cambridge Assessment.
           </p>

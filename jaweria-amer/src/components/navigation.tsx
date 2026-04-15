@@ -38,7 +38,7 @@ export function Navigation() {
             <span
               className={cn(
                 "font-serif text-lg sm:text-xl font-semibold tracking-tight transition-colors",
-                isTransparent ? "text-white" : "text-navy"
+                isTransparent ? "text-white" : "text-crimson"
               )}
             >
               Jaweria Amer
@@ -65,8 +65,8 @@ export function Navigation() {
                       ? "text-white font-medium"
                       : "text-white/70 hover:text-white"
                     : pathname === item.href
-                      ? "text-navy font-medium"
-                      : "text-slate hover:text-navy"
+                      ? "text-crimson font-medium"
+                      : "text-slate hover:text-crimson"
                 )}
               >
                 {item.label}
@@ -77,7 +77,7 @@ export function Navigation() {
                 href={whatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl bg-gold px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+                className="rounded-xl bg-rose px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md"
               >
                 WhatsApp
               </Link>
@@ -89,7 +89,7 @@ export function Navigation() {
                   "rounded-xl border px-3 py-2.5 text-sm font-medium shadow-sm transition-all",
                   isTransparent
                     ? "border-white/35 bg-white/10 text-white hover:bg-white/15"
-                    : "border-border bg-white text-navy hover:border-gold/40 hover:bg-cream/50"
+                    : "border-border bg-white text-crimson hover:border-rose/40 hover:bg-cream/50"
                 )}
               >
                 Group
@@ -101,7 +101,7 @@ export function Navigation() {
             <SheetTrigger
               className={cn(
                 "md:hidden p-2 transition-colors",
-                isTransparent ? "text-white" : "text-navy"
+                isTransparent ? "text-white" : "text-crimson"
               )}
               aria-label="Open menu"
             >
@@ -118,8 +118,8 @@ export function Navigation() {
                     className={cn(
                       "text-base tracking-wide transition-colors",
                       pathname === item.href
-                        ? "text-navy font-medium"
-                        : "text-slate hover:text-navy"
+                        ? "text-crimson font-medium"
+                        : "text-slate hover:text-crimson"
                     )}
                   >
                     {item.label}
@@ -131,7 +131,7 @@ export function Navigation() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="rounded-xl bg-gold px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+                    className="rounded-xl bg-rose px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md"
                   >
                     WhatsApp
                   </Link>
@@ -140,7 +140,7 @@ export function Navigation() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="rounded-xl border border-border bg-white px-5 py-2.5 text-center text-sm font-medium text-navy shadow-sm transition-all hover:border-gold/40 hover:bg-cream/50"
+                    className="rounded-xl border border-border bg-white px-5 py-2.5 text-center text-sm font-medium text-crimson shadow-sm transition-all hover:border-rose/40 hover:bg-cream/50"
                   >
                     WhatsApp group
                   </Link>

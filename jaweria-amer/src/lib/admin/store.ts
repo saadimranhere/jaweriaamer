@@ -1,5 +1,8 @@
 import { readFile, writeFile, mkdir } from "fs/promises";
 import { join } from "path";
+import type { CourseLevel } from "@/lib/course-offerings";
+
+export type { CourseLevel } from "@/lib/course-offerings";
 
 const DATA_DIR = join(process.cwd(), "data");
 
@@ -27,7 +30,6 @@ async function writeJSON<T>(filename: string, data: T): Promise<void> {
 // --- Course types & operations ---
 
 export type CourseStatus = "active" | "draft";
-export type CourseLevel = "O Level" | "A Level" | "Literature" | "Creative Writing";
 
 export interface AdminCourse {
   id: string;
@@ -81,7 +83,7 @@ export async function deleteCourse(id: string): Promise<void> {
 // --- Resource types & operations ---
 
 export type ResourceVisibility = "public" | "student-only";
-export type ResourceCategory = "past-paper" | "notes" | "marking-scheme" | "examiner-report";
+export type ResourceCategory = "past-paper" | "notes" | "marking-scheme" | "examiner-report" | "worksheet" | "checklist";
 
 export interface AdminResource {
   id: string;

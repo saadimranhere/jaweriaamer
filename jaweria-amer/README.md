@@ -1,6 +1,6 @@
 # Jaweria Amer Academy
 
-A premium Cambridge O Level and A Level learning platform designed for high-performing students aiming for top academic results.
+A premium Cambridge O Level learning platform designed for high-performing students aiming for top academic results.
 
 ## Overview
 
@@ -119,7 +119,7 @@ For accurate Open Graph URLs on preview deployments, set `NEXT_PUBLIC_SITE_URL` 
 ## Brand and positioning
 
 - **Tone:** Mentor–scholar: calm, structured, high-trust.
-- **Audience:** Serious O/A Level students and parents (Karachi-focused positioning in on-site copy where relevant).
+- **Audience:** Serious O Level students and parents (Karachi-focused positioning in on-site copy where relevant).
 - **Promise:** Exam-oriented structure aligned to how papers are marked, without hype or implied grade guarantees.
 
 Design tokens live in `src/app/globals.css` and Tailwind configuration; change sparingly unless updating brand guidelines.

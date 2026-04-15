@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import { Navigation } from "@/components/navigation";
-import { StickyWorkshopBar } from "@/components/sticky-workshop-bar";
-import { Footer } from "@/components/footer";
-import { BackToTop } from "@/components/back-to-top";
-import { WhatsAppButton } from "@/components/whatsapp-button";
 import { siteConfig } from "@/lib/data";
 import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
@@ -28,12 +23,10 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "O Level English Teacher Karachi",
-    "A Level English Online Classes",
     "Best O Level English Teacher Karachi",
     "CAIE English Tutor",
     "Cambridge English Karachi",
     "O Level English 1123",
-    "A Level English 9093",
     "English Language Tuition Karachi",
   ],
   authors: [{ name: siteConfig.name }],
@@ -62,14 +55,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Navigation />
-        <StickyWorkshopBar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <BackToTop />
-        <WhatsAppButton />
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

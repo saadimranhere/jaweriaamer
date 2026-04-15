@@ -34,11 +34,11 @@ export default async function ResourceViewPage({ params }: { params: Params }) {
 
   return (
     <div className="min-h-screen bg-cream">
-      <section className="border-b border-border/70 bg-navy pb-8 pt-24 text-white sm:pt-28">
+      <section className="border-b border-border/70 bg-crimson pb-8 pt-24 text-white sm:pt-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/resources"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold"
+            className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-rose"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Back to resources

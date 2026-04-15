@@ -42,3 +42,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# server-only admin secrets (password hash + reset tokens)
+/data/admin-password.json
+/data/password-reset-tokens.json
