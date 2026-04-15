@@ -8,7 +8,7 @@ import {
   Heart,
   CheckCircle2,
 } from "lucide-react";
-import { siteConfig } from "@/lib/data";
+import { whatsAppUrl } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "About",
@@ -173,10 +173,10 @@ export default function AboutPage() {
             whether this is the right fit. No obligation.
           </p>
           <Link
-            href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`}
+            href={whatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-white font-medium px-7 py-3.5 rounded-lg transition-colors text-sm"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
           >
             Book a Clarity Call
             <ArrowRight className="w-4 h-4" />

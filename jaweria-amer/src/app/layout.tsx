@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Navigation } from "@/components/navigation";
+import { StickyWorkshopBar } from "@/components/sticky-workshop-bar";
 import { Footer } from "@/components/footer";
 import { BackToTop } from "@/components/back-to-top";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -63,6 +64,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Navigation />
+        <StickyWorkshopBar />
         <main className="flex-1">{children}</main>
         <Footer />
         <BackToTop />

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { siteConfig } from "@/lib/data";
+import { whatsAppUrl } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
@@ -19,7 +20,8 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isTransparent = !scrolled;
+  /* Home begins with a bright workshop banner — keep nav legible. */
+  const isTransparent = !scrolled && pathname !== "/";
 
   return (
     <header
@@ -71,10 +73,10 @@ export function Navigation() {
               </Link>
             ))}
             <Link
-              href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`}
+              href={whatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gold hover:bg-gold-dark text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
+              className="rounded-xl bg-gold px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
             >
               Get in Touch
             </Link>
@@ -109,11 +111,11 @@ export function Navigation() {
                   </Link>
                 ))}
                 <Link
-                  href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`}
+                  href={whatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="bg-gold hover:bg-gold-dark text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors text-center mt-2"
+                  className="mt-2 rounded-xl bg-gold px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
                 >
                   Get in Touch
                 </Link>

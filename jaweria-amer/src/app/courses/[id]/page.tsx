@@ -8,7 +8,8 @@ import {
   CheckCircle2,
   ArrowLeft,
 } from "lucide-react";
-import { courses, siteConfig } from "@/lib/data";
+import { courses } from "@/lib/data";
+import { contact, whatsAppUrl } from "@/lib/contact";
 import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
@@ -190,19 +191,21 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
               <div className="border-t border-border pt-5 space-y-3">
                 <Link
-                  href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Hi, I'm interested in the ${course.title} programme.`)}`}
+                  href={whatsAppUrl(
+                    `Hi, I'm interested in the ${course.title} programme.`
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-gold hover:bg-gold-dark text-white font-medium py-3 rounded-lg transition-colors text-sm"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gold py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
                 >
                   Enrol via WhatsApp
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`}
+                  href={whatsAppUrl(contact.messageDefault)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-navy hover:bg-navy-light text-white font-medium py-3 rounded-lg transition-colors text-sm"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-navy py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-navy-light hover:shadow-md"
                 >
                   Book a Clarity Call
                 </Link>

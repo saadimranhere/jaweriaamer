@@ -1,3 +1,5 @@
+import { contact } from "./contact";
+
 export interface Course {
   id: string;
   title: string;
@@ -367,9 +369,9 @@ export const siteConfig = {
   description:
     "Rubric-driven Cambridge O/A Level English tutoring in Karachi. Structured practice, precise feedback, and mentorship that builds independent thinkers.",
   tagline: "Master CAIE English with Clarity and Care",
-  whatsappNumber: "923001234567",
-  whatsappMessage: "Hi, I'd like to learn more about your English courses.",
-  email: "hello@jaweriaamer.com",
+  whatsappNumber: contact.whatsappE164,
+  whatsappMessage: contact.messageDefault,
+  email: contact.email,
   stats: [
     { value: "95%", label: "Students scored A*/A" },
     { value: "500+", label: "Students mentored" },

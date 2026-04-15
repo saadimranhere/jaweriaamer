@@ -13,7 +13,7 @@ const categoryColors: Record<string, string> = {
 
 export function CourseCard({ course }: { course: Course }) {
   return (
-    <Card className="group border border-border/60 bg-white hover:shadow-lg hover:border-gold/30 transition-all duration-300 overflow-hidden">
+    <Card className="group border border-border/60 bg-white hover:border-brand/25 hover:shadow-lg motion-reduce:hover:translate-y-0 overflow-hidden">
       <CardContent className="p-6 flex flex-col h-full">
         <div className="flex items-start justify-between mb-4">
           <Badge
@@ -49,7 +49,7 @@ export function CourseCard({ course }: { course: Course }) {
 
         <Link
           href={`/courses/${course.id}`}
-          className="flex items-center justify-center gap-2 w-full bg-navy hover:bg-navy-light text-white text-sm font-medium py-2.5 rounded-lg transition-colors group-hover:bg-gold group-hover:text-white"
+          className="flex items-center justify-center gap-2 w-full rounded-xl bg-navy py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-navy-light group-hover:bg-brand-accent group-hover:shadow-md group-hover:text-white"
         >
           View Syllabus
           <ArrowRight className="w-4 h-4" />

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/data";
+import { contact, whatsAppUrl } from "@/lib/contact";
 
-const whatsappHref = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`;
+const whatsappHref = whatsAppUrl();
 
 export function Footer() {
   return (
@@ -50,11 +51,11 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li>
                 <a
-                  href={`mailto:${siteConfig.email}`}
+                  href={`mailto:${contact.email}`}
                   className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-gold"
                 >
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>{siteConfig.email}</span>
+                  <span>{contact.email}</span>
                 </a>
               </li>
               <li>
@@ -69,7 +70,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2.5 text-white/70">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                <span>Karachi, Pakistan (General Location)</span>
+                <span>{contact.locationLine}</span>
               </li>
             </ul>
           </div>
