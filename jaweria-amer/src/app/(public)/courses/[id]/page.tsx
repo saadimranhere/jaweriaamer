@@ -9,6 +9,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { courses } from "@/lib/data";
+import { getPublicCoursePriceLabel } from "@/lib/pricing-display";
 import { isCourseCategoryOffered, listMarketingCourses } from "@/lib/course-offerings";
 import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
@@ -156,19 +157,12 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
           <div>
             <div className="sticky top-24 space-y-6 rounded-xl border border-border/70 bg-white p-7 shadow-[0_1px_3px_rgba(34,16,18,0.05)]">
               <div>
-                <p className="font-serif text-3xl font-semibold tabular-nums text-crimson">{course.price}</p>
-                <p className="mt-1 text-xs text-muted-foreground">Full programme fee</p>
-              </div>
-
-              <div className="space-y-3 text-sm text-slate">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-                  {course.duration}
-                </div>
-                <div className="flex items-center gap-2">
-                  <CalendarDays className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-                  {course.schedule}
-                </div>
+                <p className="font-serif text-lg font-semibold leading-snug text-ink sm:text-xl">
+                  {getPublicCoursePriceLabel(course)}
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  Programme fee is confirmed after a short conversation about your goals and timeline.
+                </p>
               </div>
 
               <div className="space-y-3 border-t border-border pt-6">
@@ -178,7 +172,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.15)]"
                 >
-                  Enrol via WhatsApp
+                  Enquire on WhatsApp
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
@@ -189,6 +183,17 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                 >
                   Join WhatsApp group
                 </Link>
+              </div>
+
+              <div className="space-y-3 border-t border-border pt-6 text-sm text-slate">
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+                  {course.duration}
+                </div>
+                <div className="flex items-center gap-2">
+                  <CalendarDays className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+                  {course.schedule}
+                </div>
               </div>
 
               <p className="text-xs leading-relaxed text-muted-foreground">

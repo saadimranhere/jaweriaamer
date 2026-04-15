@@ -1,5 +1,7 @@
 import { contact } from "./contact";
 import type { CourseCategory } from "./course-offerings";
+import { finalizeResourcesForSite } from "./resource-ingestion";
+import { supplementalHubResources } from "./resource-supplements";
 
 export interface Course {
   id: string;
@@ -71,6 +73,15 @@ export const RESOURCE_HUB_CATEGORIES: {
     label: "Checklists",
     blurb: "Rubric-aligned self-review before you submit.",
   },
+];
+
+/** Curated picks for the Resources hub “Start Here” row (IDs must exist on `resources`). */
+export const START_HERE_RESOURCE_IDS: readonly string[] = [
+  "o-level-1123-syllabus",
+  "syllabus-1123-specification",
+  "changes-in-the-syllabus-1123",
+  "1123-s25-examiner-report",
+  "olevel-directed-writing-all-formats-notes",
 ];
 
 export const courses: Course[] = [
@@ -323,7 +334,7 @@ export const courses: Course[] = [
   },
 ];
 
-export const resources: Resource[] = [
+const resourceLibrary: Resource[] = [
   {
     id: "1123-s24-examiner-candidate-responses-p1",
     title: "May/June 2024 — examiner candidate responses (Paper 1)",
@@ -854,7 +865,7 @@ export const resources: Resource[] = [
   },
   {
     id: "worksheet-exam-hack-writers-effect",
-    title: "Exam hack — writer\'s effect",
+    title: "Exam hack — writer's effect",
     category: "topical-worksheets",
     subject: "English Language 1123",
     level: "O Level",
@@ -1413,7 +1424,10 @@ export const resources: Resource[] = [
     fileUrl: "/resources/worksheet-writing-words-day-15.pdf",
     description: "Day-style vocabulary push for consistent writing improvement.",
   },
+  ...supplementalHubResources,
 ];
+
+export const resources = finalizeResourcesForSite(resourceLibrary);
 
 export const siteConfig = {
   name: "Jaweria Amer",

@@ -13,6 +13,7 @@ import {
 import {
   RESOURCE_HUB_CATEGORIES,
   resources,
+  START_HERE_RESOURCE_IDS,
   type Resource,
   type ResourceHubCategory,
 } from "@/lib/data";
@@ -70,6 +71,19 @@ export function ResourcesHub() {
     });
   }, [scoped, subject, level, paper, year]);
 
+  const startHereResources = useMemo(() => {
+    return START_HERE_RESOURCE_IDS.map((id) => resources.find((r) => r.id === id)).filter(
+      (r): r is Resource => r != null
+    );
+  }, []);
+
+  const startHereIdSet = useMemo(() => new Set(START_HERE_RESOURCE_IDS), []);
+
+  const filteredMain = useMemo(
+    () => filtered.filter((r) => !startHereIdSet.has(r.id)),
+    [filtered, startHereIdSet]
+  );
+
   function resetFilters() {
     selectCategory("all");
   }
@@ -77,6 +91,22 @@ export function ResourcesHub() {
   return (
     <section className="bg-cream py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {startHereResources.length > 0 && (
+          <div className="mb-12 rounded-2xl border border-border/70 bg-white p-6 shadow-[0_1px_3px_rgba(34,16,18,0.04)] sm:mb-14 sm:p-8">
+            <h2 className="font-serif text-2xl font-semibold tracking-tight text-ink sm:text-[1.65rem]">
+              Start Here
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate">
+              Recommended for new students
+            </p>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {startHereResources.map((r) => (
+                <ResourceCard key={`start-${r.id}`} resource={r} />
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="mb-12 grid gap-3 sm:grid-cols-2 lg:mb-14 lg:grid-cols-5">
           <button
             type="button"
@@ -180,12 +210,12 @@ export function ResourcesHub() {
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((r) => (
+          {filteredMain.map((r) => (
             <ResourceCard key={r.id} resource={r} />
           ))}
         </div>
 
-        {filtered.length === 0 && (
+        {filteredMain.length === 0 && (
           <p className="py-16 text-center text-sm text-slate">No resources match these filters.</p>
         )}
       </div>
