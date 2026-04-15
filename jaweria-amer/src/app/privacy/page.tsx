@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { ContactEmailLink } from "@/components/contact-email-link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -39,6 +40,10 @@ export default function PrivacyPage() {
             <p>
               We do not sell, rent, or share your personal data with third
               parties for marketing or unrelated purposes.
+            </p>
+            <p>
+              Questions about this policy:{" "}
+              <ContactEmailLink className="font-medium" />.
             </p>
             <p>
               For full terms governing use of materials and intellectual

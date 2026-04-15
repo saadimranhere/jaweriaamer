@@ -8,6 +8,7 @@ import {
   Heart,
   CheckCircle2,
 } from "lucide-react";
+import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 
 export const metadata: Metadata = {
@@ -168,9 +169,13 @@ export default function AboutPage() {
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">
             Let&apos;s Start with a Conversation
           </h2>
-          <p className="text-white/70 leading-relaxed mb-8 max-w-lg mx-auto">
+          <p className="text-white/70 leading-relaxed mb-6 max-w-lg mx-auto">
             A short call to understand where you are, where you want to be, and
             whether this is the right fit. No obligation.
+          </p>
+          <p className="mb-8 text-sm text-white/65 max-w-lg mx-auto">
+            Prefer email?{" "}
+            <ContactEmailLink variant="onDark" className="font-medium" />
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link

@@ -9,6 +9,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { courses } from "@/lib/data";
+import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -214,6 +215,9 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
               <p className="text-xs text-slate-light leading-relaxed">
                 Not sure if this is the right fit? Book a free 15-minute call.
                 We&apos;ll assess your level and recommend a plan.
+              </p>
+              <p className="text-xs text-slate leading-relaxed">
+                Email: <ContactEmailLink className="text-xs font-medium" />
               </p>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { loginAction } from "@/lib/admin/actions";
+import { contact } from "@/lib/contact";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -38,7 +39,7 @@ export default function LoginPage() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="admin@jaweriaamer.com"
+                placeholder={contact.email}
                 required
                 className="pl-10"
               />

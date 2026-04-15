@@ -1422,7 +1422,6 @@ export const siteConfig = {
   tagline: "Master CAIE English with Clarity and Care",
   whatsappNumber: contact.whatsapp,
   whatsappMessage: contact.messageDefault,
-  email: contact.email,
   stats: [
     { value: "95%", label: "Students scored A*/A" },
     { value: "500+", label: "Students mentored" },

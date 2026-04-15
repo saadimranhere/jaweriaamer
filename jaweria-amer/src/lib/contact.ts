@@ -11,7 +11,7 @@ export const contact = {
   youtube: "https://www.youtube.com/@englishwithjaweria",
   drive: "https://drive.google.com/drive/folders/1B3MN_5TiHfknp6Ao4BwlFRlmc89F1AHF",
   instagram: "https://instagram.com/englishwithjaweria",
-  email: "hello@jaweriaamer.com",
+  email: "jaweriaamer001@gmail.com",
   /** Default inquiry (general courses / clarity call). */
   messageDefault:
     "Hi, I'd like to learn more about your English courses.",

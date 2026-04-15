@@ -9,6 +9,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { courses, siteConfig } from "@/lib/data";
+import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { CourseCard } from "@/components/course-card";
 import { WorkshopPromoSection } from "@/components/workshop-promo";
@@ -231,9 +232,13 @@ export default function HomePage() {
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Ready to Build a Clear Plan?
           </h2>
-          <p className="text-white/70 leading-relaxed mb-8 max-w-lg mx-auto">
+          <p className="text-white/70 leading-relaxed mb-4 max-w-lg mx-auto">
             Book a short clarity call to discuss your goals, current level, and
             the programme that fits. No pressure, no commitment.
+          </p>
+          <p className="mb-8 text-sm text-white/60 max-w-lg mx-auto">
+            Or write to{" "}
+            <ContactEmailLink variant="onDark" className="font-medium" />
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link

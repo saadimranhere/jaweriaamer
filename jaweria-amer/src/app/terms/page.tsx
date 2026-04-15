@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { ContactEmailLink } from "@/components/contact-email-link";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -59,6 +60,15 @@ export default function TermsPage() {
                 Student data provided via WhatsApp or email is used solely for
                 course enrollment and related communication, and will never be
                 shared with third parties.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-serif text-lg font-semibold text-navy">
+                Contact
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed sm:text-base">
+                For questions about these terms: <ContactEmailLink className="font-medium" />.
               </p>
             </section>
           </article>

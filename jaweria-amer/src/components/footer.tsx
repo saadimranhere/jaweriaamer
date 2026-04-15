@@ -2,12 +2,8 @@ import Link from "next/link";
 import type { SVGProps } from "react";
 import { Mail, MapPin, MessageCircle, Phone, PlayCircle, UsersRound } from "lucide-react";
 import { siteConfig } from "@/lib/data";
-import {
-  contact,
-  telUrl,
-  whatsAppGroupUrl,
-  whatsAppUrl,
-} from "@/lib/contact";
+import { ContactEmailLink } from "@/components/contact-email-link";
+import { contact, telUrl, whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 
 const whatsappDirectHref = whatsAppUrl();
 const whatsappGroupHref = whatsAppGroupUrl();
@@ -64,14 +60,9 @@ export function Footer() {
               Contact
             </h2>
             <ul className="space-y-4 text-sm">
-              <li>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-gold"
-                >
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>{contact.email}</span>
-                </a>
+              <li className="inline-flex items-start gap-2.5 text-sm">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
+                <ContactEmailLink variant="onDark" />
               </li>
               <li>
                 <a

@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   BookOpen,
   ClipboardList,
-  Download,
-  ExternalLink,
+  Eye,
   FileSearch,
   FolderOpen,
   LayoutGrid,
@@ -201,26 +201,14 @@ function ResourceCard({ resource }: { resource: Resource }) {
       <h3 className="font-serif text-base font-semibold leading-snug text-navy">{resource.title}</h3>
       <p className="mt-2 text-xs leading-relaxed text-slate">{meta}</p>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-slate">{resource.description}</p>
-      <div className="mt-5 flex flex-col gap-2 sm:flex-row">
-        <a
-          href={resource.fileUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-white px-4 py-2.5 text-center text-sm font-medium text-navy shadow-sm transition-all hover:border-brand/40 hover:text-brand"
+      <div className="mt-5">
+        <Link
+          href={`/resources/view/${resource.id}`}
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-brand-accent hover:shadow-md"
         >
-          <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
-          View
-        </a>
-        <a
-          href={resource.fileUrl}
-          download
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-brand-accent hover:shadow-md"
-        >
-          <Download className="h-4 w-4 shrink-0" aria-hidden />
-          Download
-        </a>
+          <Eye className="h-4 w-4 shrink-0" aria-hidden />
+          View Resource
+        </Link>
       </div>
     </article>
   );
