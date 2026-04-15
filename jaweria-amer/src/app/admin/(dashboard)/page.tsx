@@ -31,10 +31,10 @@ export default async function AdminDashboard() {
           <Link
             key={stat.label}
             href={stat.href}
-            className="bg-white rounded-xl border border-border/60 p-5 hover:shadow-md transition-shadow"
+            className="rounded-xl border border-border/60 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
           >
             <div className="flex items-center justify-between mb-3">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${stat.color}`}>
+              <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${stat.color}`}>
                 <stat.icon className="w-5 h-5" />
               </div>
             </div>
@@ -45,7 +45,7 @@ export default async function AdminDashboard() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl border border-border/60 p-5">
+        <div className="rounded-xl border border-border/60 bg-white p-5 shadow-sm">
           <h2 className="font-serif text-lg font-semibold text-navy mb-4">Recent Leads</h2>
           {leads.length === 0 ? (
             <div className="text-center py-8">
@@ -73,13 +73,13 @@ export default async function AdminDashboard() {
           )}
         </div>
 
-        <div className="bg-white rounded-xl border border-border/60 p-5">
+        <div className="rounded-xl border border-border/60 bg-white p-5 shadow-sm">
           <h2 className="font-serif text-lg font-semibold text-navy mb-4">Courses Overview</h2>
           {courses.length === 0 ? (
             <div className="text-center py-8">
               <BookOpen className="w-8 h-8 text-slate-light/50 mx-auto mb-2" />
               <p className="text-sm text-slate-light">No courses created yet</p>
-              <Link href="/admin/courses" className="text-xs text-gold hover:text-gold-dark mt-1 inline-block">
+              <Link href="/admin/courses" className="mt-1 inline-block text-xs text-brand transition-colors hover:text-brand-accent">
                 Create your first course
               </Link>
             </div>
@@ -92,7 +92,7 @@ export default async function AdminDashboard() {
                     <p className="text-xs text-slate-light">{course.level}</p>
                   </div>
                   <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                    course.status === "active" ? "bg-green-50 text-green-600" : "bg-slate/10 text-slate"
+                    course.status === "active" ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-700"
                   }`}>
                     {course.status}
                   </span>

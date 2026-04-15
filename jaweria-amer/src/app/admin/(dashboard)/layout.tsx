@@ -17,7 +17,7 @@ export default async function AdminDashboardLayout({
   await requireAuth();
 
   return (
-    <div className="min-h-screen bg-[#F4F5F7] flex">
+    <div className="flex min-h-screen bg-cream-dark">
       <AdminSidebar />
       <div className="flex-1 flex flex-col ml-0 lg:ml-64">
         <AdminTopbar />

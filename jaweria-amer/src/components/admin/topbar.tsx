@@ -10,7 +10,7 @@ export function AdminTopbar() {
         <Link
           href="/"
           target="_blank"
-          className="text-xs text-slate hover:text-navy flex items-center gap-1 transition-colors"
+          className="flex items-center gap-1 text-xs text-slate transition-colors hover:text-brand"
         >
           View Site
           <ExternalLink className="w-3 h-3" />

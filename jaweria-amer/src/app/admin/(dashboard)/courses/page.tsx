@@ -91,7 +91,9 @@ export default function CoursesPage() {
               {editingCourse && <input type="hidden" name="id" value={editingCourse.id} />}
 
               {formState?.error && (
-                <div className="bg-red-50 text-red-700 text-sm px-3 py-2 rounded-lg border border-red-200">{formState.error}</div>
+                <div className="rounded-xl border border-brand/25 bg-brand-soft px-3 py-2 text-sm text-brand shadow-sm">
+                  {formState.error}
+                </div>
               )}
 
               <div className="space-y-1.5">
@@ -101,7 +103,12 @@ export default function CoursesPage() {
 
               <div className="space-y-1.5">
                 <Label htmlFor="level">Level</Label>
-                <select name="level" id="level" defaultValue={editingCourse?.level || "O Level"} className="w-full border border-input rounded-md px-3 py-2 text-sm bg-white">
+                <select
+                  name="level"
+                  id="level"
+                  defaultValue={editingCourse?.level || "O Level"}
+                  className="w-full rounded-xl border border-input bg-white px-3 py-2 text-sm shadow-sm focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                >
                   <option>O Level</option>
                   <option>A Level</option>
                   <option>Literature</option>
@@ -116,7 +123,12 @@ export default function CoursesPage() {
 
               <div className="space-y-1.5">
                 <Label htmlFor="status">Status</Label>
-                <select name="status" id="status" defaultValue={editingCourse?.status || "draft"} className="w-full border border-input rounded-md px-3 py-2 text-sm bg-white">
+                <select
+                  name="status"
+                  id="status"
+                  defaultValue={editingCourse?.status || "draft"}
+                  className="w-full rounded-xl border border-input bg-white px-3 py-2 text-sm shadow-sm focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                >
                   <option value="draft">Draft</option>
                   <option value="active">Active</option>
                 </select>
@@ -133,7 +145,7 @@ export default function CoursesPage() {
         </Dialog>
       </div>
 
-      <div className="bg-white rounded-xl border border-border/60 overflow-hidden">
+      <div className="overflow-hidden rounded-xl border border-border/60 bg-white shadow-sm">
         {loading ? (
           <div className="p-12 text-center text-slate-light text-sm">Loading courses...</div>
         ) : courses.length === 0 ? (
@@ -164,7 +176,9 @@ export default function CoursesPage() {
                   <TableCell className="text-slate">PKR {course.price.toLocaleString()}</TableCell>
                   <TableCell>
                     <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                      course.status === "active" ? "bg-green-50 text-green-600" : "bg-slate/10 text-slate"
+                      course.status === "active"
+                        ? "bg-green-50 text-green-700"
+                        : "bg-gray-100 text-gray-700"
                     }`}>
                       {course.status}
                     </span>
@@ -174,7 +188,11 @@ export default function CoursesPage() {
                       <button onClick={() => openEdit(course)} className="p-1.5 text-slate hover:text-navy rounded hover:bg-slate/10 transition-colors">
                         <Pencil className="w-3.5 h-3.5" />
                       </button>
-                      <button onClick={() => handleDelete(course.id)} className="p-1.5 text-slate hover:text-red-600 rounded hover:bg-red-50 transition-colors">
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(course.id)}
+                        className="rounded-lg p-1.5 text-slate transition-colors hover:bg-brand-soft hover:text-brand"
+                      >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>

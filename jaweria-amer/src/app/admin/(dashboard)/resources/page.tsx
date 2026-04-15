@@ -104,7 +104,9 @@ export default function ResourcesPage() {
               <input type="hidden" name="fileSize" value={fileSize} />
 
               {formState?.error && (
-                <div className="bg-red-50 text-red-700 text-sm px-3 py-2 rounded-lg border border-red-200">{formState.error}</div>
+                <div className="rounded-xl border border-brand/25 bg-brand-soft px-3 py-2 text-sm text-brand shadow-sm">
+                  {formState.error}
+                </div>
               )}
 
               <div className="space-y-1.5">
@@ -147,7 +149,7 @@ export default function ResourcesPage() {
         </Dialog>
       </div>
 
-      <div className="bg-white rounded-xl border border-border/60 overflow-hidden">
+      <div className="overflow-hidden rounded-xl border border-border/60 bg-white shadow-sm">
         {loading ? (
           <div className="p-12 text-center text-slate-light text-sm">Loading resources...</div>
         ) : resources.length === 0 ? (
@@ -185,7 +187,7 @@ export default function ResourcesPage() {
                     <button
                       onClick={() => handleToggleVisibility(resource.id, resource.visibility)}
                       className={`text-xs px-2 py-1 rounded-full font-medium flex items-center gap-1 w-fit ${
-                        resource.visibility === "public" ? "bg-green-50 text-green-600" : "bg-amber-50 text-amber-600"
+                        resource.visibility === "public" ? "bg-green-50 text-green-700" : "bg-amber-50 text-amber-700"
                       }`}
                     >
                       {resource.visibility === "public" ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
@@ -193,7 +195,11 @@ export default function ResourcesPage() {
                     </button>
                   </TableCell>
                   <TableCell>
-                    <button onClick={() => handleDelete(resource.id)} className="p-1.5 text-slate hover:text-red-600 rounded hover:bg-red-50 transition-colors">
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(resource.id)}
+                      className="rounded-lg p-1.5 text-slate transition-colors hover:bg-brand-soft hover:text-brand"
+                    >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </TableCell>

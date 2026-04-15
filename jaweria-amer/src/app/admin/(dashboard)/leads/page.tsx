@@ -16,8 +16,8 @@ import type { Lead } from "@/lib/admin/store";
 
 const statusOptions = [
   { value: "new", label: "New", className: "bg-brand-soft text-brand" },
-  { value: "contacted", label: "Contacted", className: "bg-amber-50 text-amber-600" },
-  { value: "enrolled", label: "Enrolled", className: "bg-green-50 text-green-600" },
+  { value: "contacted", label: "Contacted", className: "bg-amber-50 text-amber-700" },
+  { value: "enrolled", label: "Enrolled", className: "bg-green-50 text-green-700" },
 ];
 
 export default function LeadsPage() {
@@ -59,22 +59,22 @@ export default function LeadsPage() {
 
       {!loading && leads.length > 0 && (
         <div className="grid grid-cols-3 gap-3 mb-6">
-          <div className="rounded-lg bg-brand-soft p-3 text-center">
+          <div className="rounded-lg bg-brand-soft p-3 text-center shadow-sm">
             <p className="font-serif text-xl font-bold text-brand">{newCount}</p>
             <p className="text-xs text-brand/80">New</p>
           </div>
-          <div className="bg-amber-50 rounded-lg p-3 text-center">
-            <p className="font-serif text-xl font-bold text-amber-600">{contactedCount}</p>
-            <p className="text-xs text-amber-600/70">Contacted</p>
+          <div className="rounded-lg bg-amber-50 p-3 text-center shadow-sm">
+            <p className="font-serif text-xl font-bold text-amber-700">{contactedCount}</p>
+            <p className="text-xs text-amber-700/80">Contacted</p>
           </div>
-          <div className="bg-green-50 rounded-lg p-3 text-center">
-            <p className="font-serif text-xl font-bold text-green-600">{enrolledCount}</p>
-            <p className="text-xs text-green-600/70">Enrolled</p>
+          <div className="rounded-lg bg-green-50 p-3 text-center shadow-sm">
+            <p className="font-serif text-xl font-bold text-green-700">{enrolledCount}</p>
+            <p className="text-xs text-green-700/80">Enrolled</p>
           </div>
         </div>
       )}
 
-      <div className="bg-white rounded-xl border border-border/60 overflow-hidden">
+      <div className="overflow-hidden rounded-xl border border-border/60 bg-white shadow-sm">
         {loading ? (
           <div className="p-12 text-center text-slate-light text-sm">Loading leads...</div>
         ) : leads.length === 0 ? (
@@ -125,7 +125,11 @@ export default function LeadsPage() {
                     </select>
                   </TableCell>
                   <TableCell>
-                    <button onClick={() => handleDelete(lead.id)} className="p-1.5 text-slate hover:text-red-600 rounded hover:bg-red-50 transition-colors">
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(lead.id)}
+                      className="rounded-lg p-1.5 text-slate transition-colors hover:bg-brand-soft hover:text-brand"
+                    >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </TableCell>

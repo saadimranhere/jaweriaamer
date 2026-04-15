@@ -25,7 +25,7 @@ export default function LoginPage() {
 
         <form action={action} className="bg-white rounded-xl p-6 shadow-xl space-y-4">
           {state?.error && (
-            <div className="bg-red-50 text-red-700 text-sm px-4 py-2.5 rounded-lg border border-red-200">
+            <div className="rounded-xl border border-brand/25 bg-brand-soft px-4 py-2.5 text-sm text-brand shadow-sm">
               {state.error}
             </div>
           )}

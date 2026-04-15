@@ -21,7 +21,7 @@ import {
 const categoryColors: Record<string, string> = {
   "o-level": "bg-navy/10 text-navy",
   "a-level": "bg-gold/15 text-gold-dark",
-  literature: "bg-slate/10 text-slate",
+  literature: "bg-brand-soft/90 text-brand",
   "creative-writing": "bg-navy-light/10 text-navy-light",
 };
 

@@ -30,7 +30,7 @@ const typeIcons: Record<string, typeof FileText> = {
 const typeBadgeColors: Record<string, string> = {
   "past-paper": "bg-navy/10 text-navy",
   "marking-scheme": "bg-gold/15 text-gold-dark",
-  "examiner-report": "bg-slate/10 text-slate",
+  "examiner-report": "bg-brand-soft/90 text-brand",
   checklist: "bg-navy-light/10 text-navy-light",
 };
 

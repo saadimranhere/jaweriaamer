@@ -76,10 +76,12 @@ export default function SettingsPage() {
         <input type="hidden" name="statsCount" value={settings.stats.length} />
 
         {formState?.error && (
-          <div className="bg-red-50 text-red-700 text-sm px-4 py-2.5 rounded-lg border border-red-200">{formState.error}</div>
+          <div className="rounded-xl border border-brand/25 bg-brand-soft px-4 py-2.5 text-sm text-brand shadow-sm">
+            {formState.error}
+          </div>
         )}
 
-        <div className="bg-white rounded-xl border border-border/60 p-6">
+        <div className="rounded-xl border border-border/60 bg-white p-6 shadow-sm">
           <h2 className="font-serif text-lg font-semibold text-navy mb-4">WhatsApp Contact</h2>
           <div className="space-y-1.5">
             <Label htmlFor="whatsappNumber">WhatsApp Number (with country code)</Label>
@@ -95,7 +97,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-border/60 p-6">
+        <div className="rounded-xl border border-border/60 bg-white p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-serif text-lg font-semibold text-navy">Results Ticker</h2>
             {settings.stats.length < 6 && (
@@ -137,7 +139,7 @@ export default function SettingsPage() {
                   <button
                     type="button"
                     onClick={() => removeStat(i)}
-                    className="mt-6 p-1.5 text-slate hover:text-red-600 rounded hover:bg-red-50 transition-colors"
+                    className="mt-6 rounded-lg p-1.5 text-slate transition-colors hover:bg-brand-soft hover:text-brand"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
