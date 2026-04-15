@@ -86,13 +86,13 @@ export default function ResourcesPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-crimson">Resource Vault</h1>
+          <h1 className="font-serif text-2xl font-semibold tracking-tight text-ink">Resource Vault</h1>
           <p className="text-sm text-slate mt-1">Upload and manage PDFs and documents</p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <Button
             type="button"
-            className="bg-crimson hover:bg-rose text-white gap-2"
+            className="gap-2 shadow-sm"
             onClick={() => setDialogOpen(true)}
           >
             <Plus className="w-4 h-4" /> Upload Resource
@@ -100,7 +100,7 @@ export default function ResourcesPage() {
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogContent className="bg-white max-w-md">
             <DialogHeader>
-              <DialogTitle className="font-serif text-lg text-crimson">Upload Resource</DialogTitle>
+              <DialogTitle className="font-serif text-lg font-semibold tracking-tight text-ink">Upload Resource</DialogTitle>
             </DialogHeader>
             <form action={formAction} className="space-y-4">
               <input type="hidden" name="fileName" value={fileName} />
@@ -119,7 +119,7 @@ export default function ResourcesPage() {
 
               <div className="space-y-1.5">
                 <Label htmlFor="category">Category</Label>
-                <select name="category" id="category" className="w-full border border-input rounded-md px-3 py-2 text-sm bg-white">
+                <select name="category" id="category" className="w-full rounded-xl border border-input bg-white px-3 py-2 text-sm shadow-sm focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40">
                   <option value="past-paper">Past Paper</option>
                   <option value="notes">Notes</option>
                   <option value="marking-scheme">Marking Scheme</option>
@@ -131,7 +131,7 @@ export default function ResourcesPage() {
 
               <div className="space-y-1.5">
                 <Label htmlFor="visibility">Visibility</Label>
-                <select name="visibility" id="visibility" className="w-full border border-input rounded-md px-3 py-2 text-sm bg-white">
+                <select name="visibility" id="visibility" className="w-full rounded-xl border border-input bg-white px-3 py-2 text-sm shadow-sm focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40">
                   <option value="public">Public</option>
                   <option value="student-only">Student Only</option>
                 </select>
@@ -145,7 +145,7 @@ export default function ResourcesPage() {
 
               <div className="flex gap-3 pt-2">
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)} className="flex-1">Cancel</Button>
-                <Button type="submit" disabled={formPending || !fileName} className="flex-1 bg-crimson hover:bg-rose text-white">
+                <Button type="submit" disabled={formPending || !fileName} className="flex-1 shadow-sm">
                   {formPending ? "Uploading..." : "Upload"}
                 </Button>
               </div>
@@ -161,9 +161,9 @@ export default function ResourcesPage() {
         ) : resources.length === 0 ? (
           <div className="p-12 text-center">
             <FolderOpen className="w-10 h-10 text-slate-light/40 mx-auto mb-3" />
-            <p className="text-sm font-medium text-crimson mb-1">No resources uploaded</p>
+            <p className="text-sm font-medium text-ink mb-1">No resources uploaded</p>
             <p className="text-xs text-slate-light mb-4">Upload past papers, notes, and marking schemes.</p>
-            <Button onClick={() => setDialogOpen(true)} className="bg-crimson hover:bg-rose text-white gap-2">
+            <Button onClick={() => setDialogOpen(true)} className="gap-2 shadow-sm">
               <Plus className="w-4 h-4" /> Upload Resource
             </Button>
           </div>
@@ -181,7 +181,7 @@ export default function ResourcesPage() {
             <TableBody>
               {resources.map((resource) => (
                 <TableRow key={resource.id}>
-                  <TableCell className="font-medium text-crimson">
+                  <TableCell className="font-medium text-ink">
                     <div className="flex items-center gap-2">
                       <FileText className="w-4 h-4 text-slate-light" />
                       {resource.title}

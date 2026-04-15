@@ -22,7 +22,7 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <div className="bg-white rounded-xl p-6 shadow-xl space-y-4 text-center">
-        <p className="text-crimson text-sm">This reset link is missing a token. Request a new link from the sign-in page.</p>
+        <p className="text-sm text-ink-muted">This reset link is missing a token. Request a new link from the sign-in page.</p>
         <Link
           href="/admin/forgot-password"
           className={cn(buttonVariants({ variant: "outline" }), "w-full justify-center")}
@@ -30,7 +30,7 @@ function ResetPasswordForm() {
           Request reset
         </Link>
         <p>
-          <Link href="/admin/login" className="text-sm text-crimson/70 hover:text-crimson">
+          <Link href="/admin/login" className="text-sm text-ink-muted hover:text-brand-accent">
             Back to sign in
           </Link>
         </p>
@@ -49,7 +49,7 @@ function ResetPasswordForm() {
       )}
 
       <div className="space-y-1.5">
-        <Label htmlFor="password" className="text-sm font-medium text-crimson">
+        <Label htmlFor="password" className="text-sm font-medium text-ink">
           New password
         </Label>
         <div className="relative">
@@ -67,7 +67,7 @@ function ResetPasswordForm() {
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-crimson"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-brand-accent"
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
             {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -76,7 +76,7 @@ function ResetPasswordForm() {
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="confirm" className="text-sm font-medium text-crimson">
+        <Label htmlFor="confirm" className="text-sm font-medium text-ink">
           Confirm password
         </Label>
         <div className="relative">
@@ -94,7 +94,7 @@ function ResetPasswordForm() {
           <button
             type="button"
             onClick={() => setShowConfirm(!showConfirm)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-crimson"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-brand-accent"
             aria-label={showConfirm ? "Hide password" : "Show password"}
           >
             {showConfirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -102,12 +102,12 @@ function ResetPasswordForm() {
         </div>
       </div>
 
-      <Button type="submit" disabled={pending} className="w-full bg-crimson hover:bg-rose text-white">
+      <Button type="submit" disabled={pending} className="w-full shadow-sm">
         {pending ? "Saving…" : "Update password"}
       </Button>
 
       <p className="text-center">
-        <Link href="/admin/login" className="text-sm text-crimson/70 hover:text-crimson">
+        <Link href="/admin/login" className="text-sm text-ink-muted hover:text-brand-accent">
           Back to sign in
         </Link>
       </p>
@@ -129,7 +129,7 @@ export default function ResetPasswordPage() {
 
         <Suspense
           fallback={
-            <div className="bg-white rounded-xl p-6 shadow-xl text-center text-sm text-crimson/70">Loading…</div>
+            <div className="bg-white rounded-xl p-6 shadow-xl text-center text-sm text-muted-foreground">Loading…</div>
           }
         >
           <ResetPasswordForm />

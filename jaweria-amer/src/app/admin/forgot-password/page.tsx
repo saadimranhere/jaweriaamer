@@ -39,7 +39,7 @@ export default function ForgotPasswordPage() {
           )}
 
           <div className="space-y-1.5">
-            <Label htmlFor="email" className="text-sm font-medium text-crimson">
+            <Label htmlFor="email" className="text-sm font-medium text-ink">
               Email
             </Label>
             <div className="relative">
@@ -56,14 +56,14 @@ export default function ForgotPasswordPage() {
             </div>
           </div>
 
-          <Button type="submit" disabled={pending} className="w-full bg-crimson hover:bg-rose text-white">
+          <Button type="submit" disabled={pending} className="w-full shadow-sm">
             {pending ? "Sending…" : "Send reset link"}
           </Button>
 
           <p className="text-center">
             <Link
               href="/admin/login"
-              className="inline-flex items-center gap-1.5 text-sm text-crimson/70 hover:text-crimson"
+              className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-brand-accent"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to sign in

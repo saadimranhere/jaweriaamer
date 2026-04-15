@@ -71,21 +71,21 @@ export default function CoursesPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-crimson">Courses</h1>
+          <h1 className="font-serif text-2xl font-semibold tracking-tight text-ink">Courses</h1>
           <p className="text-sm text-slate mt-1">Manage your course catalogue</p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <Button
             type="button"
             onClick={openNew}
-            className="bg-crimson hover:bg-rose text-white gap-2"
+            className="gap-2 shadow-sm"
           >
             <Plus className="w-4 h-4" /> Add Course
           </Button>
           <Dialog open={dialogOpen} onOpenChange={(open) => { setDialogOpen(open); if (!open) setEditingCourse(null); }}>
             <DialogContent className="bg-white max-w-md">
             <DialogHeader>
-              <DialogTitle className="font-serif text-lg text-crimson">
+              <DialogTitle className="font-serif text-lg font-semibold tracking-tight text-ink">
                 {editingCourse ? "Edit Course" : "New Course"}
               </DialogTitle>
             </DialogHeader>
@@ -150,7 +150,7 @@ export default function CoursesPage() {
 
               <div className="flex gap-3 pt-2">
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)} className="flex-1">Cancel</Button>
-                <Button type="submit" disabled={formPending} className="flex-1 bg-crimson hover:bg-rose text-white">
+                <Button type="submit" disabled={formPending} className="flex-1 shadow-sm">
                   {formPending ? "Saving..." : "Save Course"}
                 </Button>
               </div>
@@ -166,9 +166,9 @@ export default function CoursesPage() {
         ) : courses.length === 0 ? (
           <div className="p-12 text-center">
             <BookOpen className="w-10 h-10 text-slate-light/40 mx-auto mb-3" />
-            <p className="text-sm font-medium text-crimson mb-1">No courses found</p>
+            <p className="text-sm font-medium text-ink mb-1">No courses found</p>
             <p className="text-xs text-slate-light mb-4">Create your first course to get started.</p>
-            <Button onClick={openNew} className="bg-crimson hover:bg-rose text-white gap-2">
+            <Button onClick={openNew} className="gap-2 shadow-sm">
               <Plus className="w-4 h-4" /> Add Course
             </Button>
           </div>
@@ -186,21 +186,21 @@ export default function CoursesPage() {
             <TableBody>
               {courses.map((course) => (
                 <TableRow key={course.id}>
-                  <TableCell className="font-medium text-crimson">{course.title}</TableCell>
+                  <TableCell className="font-medium text-ink">{course.title}</TableCell>
                   <TableCell className="text-slate">{course.level}</TableCell>
                   <TableCell className="text-slate">PKR {course.price.toLocaleString()}</TableCell>
                   <TableCell>
                     <span className={`text-xs px-2 py-1 rounded-full font-medium ${
                       course.status === "active"
                         ? "bg-green-50 text-green-700"
-                        : "bg-gray-100 text-gray-700"
+                        : "bg-muted text-muted-foreground"
                     }`}>
                       {course.status}
                     </span>
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-1">
-                      <button onClick={() => openEdit(course)} className="p-1.5 text-slate hover:text-crimson rounded hover:bg-slate/10 transition-colors">
+                      <button onClick={() => openEdit(course)} className="p-1.5 text-slate rounded transition-colors hover:bg-muted hover:text-brand-accent">
                         <Pencil className="w-3.5 h-3.5" />
                       </button>
                       <button

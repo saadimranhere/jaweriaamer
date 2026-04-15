@@ -5,13 +5,15 @@ import { ResourcesHub } from "@/components/resources-hub";
 export default function ResourcesPage() {
   return (
     <>
-      <section className="bg-crimson pb-12 pt-28 sm:pb-16 sm:pt-36">
+      <section className="bg-gradient-to-b from-crimson to-crimson-dark pb-16 pt-28 sm:pb-20 sm:pt-36">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-rose">Learning hub</p>
-          <h1 className="mb-4 font-serif text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 sm:text-xs">
+            Learning hub
+          </p>
+          <h1 className="mb-4 max-w-2xl font-serif text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.35rem]">
             Resources
           </h1>
-          <p className="max-w-2xl leading-relaxed text-white/65">
+          <p className="max-w-2xl text-sm leading-relaxed text-white/72 sm:text-base">
             Notes, worksheets, past papers, examiner reports, and checklists — organised so you can
             find what you need quickly and practise with purpose.
           </p>

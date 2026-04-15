@@ -20,7 +20,6 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* Home begins with a bright workshop banner — keep nav legible. */
   const isTransparent = !scrolled && pathname !== "/";
 
   return (
@@ -28,56 +27,62 @@ export function Navigation() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border"
+          ? "border-b border-border/80 bg-white/95 shadow-[0_1px_0_rgba(34,16,18,0.04)] backdrop-blur-md"
           : "bg-transparent"
       )}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          <Link href="/" className="flex flex-col">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between sm:h-[4.25rem]">
+          <Link href="/" className="flex flex-col gap-0.5">
             <span
               className={cn(
-                "font-serif text-lg sm:text-xl font-semibold tracking-tight transition-colors",
-                isTransparent ? "text-white" : "text-crimson"
+                "font-serif text-lg font-semibold tracking-tight transition-colors sm:text-xl",
+                isTransparent ? "text-white" : "text-ink"
               )}
             >
               Jaweria Amer
             </span>
             <span
               className={cn(
-                "text-[10px] sm:text-xs tracking-[0.2em] uppercase transition-colors",
-                isTransparent ? "text-white/60" : "text-slate-light"
+                "text-[10px] font-medium uppercase tracking-[0.22em] transition-colors sm:text-[11px]",
+                isTransparent ? "text-white/55" : "text-slate-light"
               )}
             >
               English Specialist
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
-            {siteConfig.navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm tracking-wide transition-colors",
-                  isTransparent
-                    ? pathname === item.href
-                      ? "text-white font-medium"
-                      : "text-white/70 hover:text-white"
-                    : pathname === item.href
-                      ? "text-crimson font-medium"
-                      : "text-slate hover:text-crimson"
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-10 md:flex">
+            {siteConfig.navigation.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "relative text-sm tracking-[0.04em] transition-colors",
+                    isTransparent
+                      ? active
+                        ? "font-medium text-white"
+                        : "text-white/72 hover:text-white"
+                      : active
+                        ? "font-medium text-ink after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-px after:rounded-full after:bg-brand"
+                        : "text-slate hover:text-ink"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <div className="ml-1 flex items-center gap-2 border-l border-border/60 pl-8">
               <Link
                 href={whatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl bg-rose px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md"
+                className="rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_2px_10px_rgba(112,20,20,0.15)]"
               >
                 WhatsApp
               </Link>
@@ -86,10 +91,10 @@ export function Navigation() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "rounded-xl border px-3 py-2.5 text-sm font-medium shadow-sm transition-all",
+                  "rounded-xl border px-3 py-2.5 text-sm font-medium transition-all",
                   isTransparent
-                    ? "border-white/35 bg-white/10 text-white hover:bg-white/15"
-                    : "border-border bg-white text-crimson hover:border-rose/40 hover:bg-cream/50"
+                    ? "border-white/30 bg-white/10 text-white hover:bg-white/18"
+                    : "border-border/90 bg-white text-ink shadow-none hover:border-border hover:bg-muted/40"
                 )}
               >
                 Group
@@ -100,38 +105,42 @@ export function Navigation() {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={cn(
-                "md:hidden p-2 transition-colors",
-                isTransparent ? "text-white" : "text-crimson"
+                "rounded-lg p-2 transition-colors md:hidden",
+                isTransparent ? "text-white" : "text-ink"
               )}
               aria-label="Open menu"
             >
-              <Menu className="w-5 h-5" />
+              <Menu className="h-5 w-5" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-72 bg-white p-6">
+            <SheetContent side="right" className="w-[min(100vw-2rem,20rem)] border-border/60 bg-white p-6">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col gap-6 mt-8">
-                {siteConfig.navigation.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "text-base tracking-wide transition-colors",
-                      pathname === item.href
-                        ? "text-crimson font-medium"
-                        : "text-slate hover:text-crimson"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <div className="mt-2 flex flex-col gap-2">
+              <div className="mt-10 flex flex-col gap-1">
+                {siteConfig.navigation.map((item) => {
+                  const active =
+                    item.href === "/"
+                      ? pathname === "/"
+                      : pathname === item.href || pathname.startsWith(`${item.href}/`);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        "rounded-lg px-3 py-2.5 text-base tracking-[0.02em] transition-colors",
+                        active ? "bg-muted font-medium text-ink" : "text-slate hover:bg-muted/60 hover:text-ink"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+                <div className="mt-6 flex flex-col gap-2 border-t border-border/60 pt-6">
                   <Link
                     href={whatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="rounded-xl bg-rose px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md"
+                    className="rounded-xl bg-primary py-2.5 text-center text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-brand-accent"
                   >
                     WhatsApp
                   </Link>
@@ -140,7 +149,7 @@ export function Navigation() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="rounded-xl border border-border bg-white px-5 py-2.5 text-center text-sm font-medium text-crimson shadow-sm transition-all hover:border-rose/40 hover:bg-cream/50"
+                    className="rounded-xl border border-border bg-white py-2.5 text-center text-sm font-medium text-ink transition-colors hover:bg-muted/50"
                   >
                     WhatsApp group
                   </Link>

@@ -32,15 +32,15 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-crimson">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
+      <section className="bg-gradient-to-b from-crimson to-crimson-dark pb-16 pt-28 sm:pb-20 sm:pt-36">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 sm:text-xs">
             About
           </p>
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h1 className="mb-4 max-w-2xl font-serif text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.35rem]">
             Jaweria Amer
           </h1>
-          <p className="text-white/60 max-w-xl leading-relaxed">
+          <p className="max-w-xl leading-relaxed text-white/70">
             Cambridge English specialist with international education
             experience, dedicated to structured mentorship that builds
             independent thinkers.
@@ -48,9 +48,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
+      <section className="bg-cream py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-5 lg:gap-20">
             {/* Portrait placeholder */}
             <div className="lg:col-span-2">
               <div className="aspect-[3/4] bg-crimson/5 rounded-2xl border border-border/60 flex items-center justify-center">
@@ -60,7 +60,7 @@ export default function AboutPage() {
                       JA
                     </span>
                   </div>
-                  <p className="font-serif text-lg font-semibold text-crimson">
+                  <p className="font-serif text-lg font-semibold text-ink">
                     Jaweria Amer
                   </p>
                   <p className="text-xs text-slate-light tracking-wider uppercase mt-1">
@@ -73,7 +73,7 @@ export default function AboutPage() {
             {/* Bio */}
             <div className="lg:col-span-3 space-y-8">
               <div>
-                <h2 className="font-serif text-2xl font-bold text-crimson mb-4">
+                <h2 className="mb-4 font-serif text-xl font-semibold text-ink sm:text-2xl">
                   Teaching Philosophy
                 </h2>
                 <div className="space-y-4 text-slate leading-relaxed">
@@ -128,7 +128,7 @@ export default function AboutPage() {
                     className="bg-white rounded-xl p-5 border border-border/60"
                   >
                     <item.icon className="w-5 h-5 text-rose mb-3" />
-                    <h3 className="font-serif text-sm font-semibold text-crimson mb-1.5">
+                    <h3 className="mb-1.5 font-serif text-sm font-semibold text-ink">
                       {item.title}
                     </h3>
                     <p className="text-xs text-slate leading-relaxed">
@@ -139,7 +139,7 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <h2 className="font-serif text-2xl font-bold text-crimson mb-4">
+                <h2 className="mb-4 font-serif text-xl font-semibold text-ink sm:text-2xl">
                   What Sets This Apart
                 </h2>
                 <div className="space-y-3">
@@ -164,9 +164,9 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-20 bg-crimson">
+      <section className="bg-gradient-to-b from-crimson to-crimson-dark py-20 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">
+          <h2 className="mb-4 font-serif text-2xl font-semibold leading-tight text-white sm:text-3xl">
             Let&apos;s Start with a Conversation
           </h2>
           <p className="text-white/70 leading-relaxed mb-6 max-w-lg mx-auto">

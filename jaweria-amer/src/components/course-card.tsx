@@ -5,54 +5,50 @@ import { Badge } from "@/components/ui/badge";
 import type { Course } from "@/lib/data";
 
 const categoryColors: Record<string, string> = {
-  "o-level": "bg-crimson/10 text-crimson",
-  "a-level": "bg-rose/15 text-rose-dark",
-  literature: "bg-brand-soft/90 text-brand",
-  "creative-writing": "bg-crimson-light/10 text-crimson-light",
+  "o-level": "border-crimson/15 bg-crimson/8 text-crimson",
+  "a-level": "border-rose/20 bg-rose/10 text-rose-dark",
+  literature: "border-border bg-brand-soft/80 text-brand",
+  "creative-writing": "border-border bg-muted text-ink-muted",
 };
 
 export function CourseCard({ course }: { course: Course }) {
   return (
-    <Card className="group border border-border/60 bg-white hover:border-brand/25 hover:shadow-lg motion-reduce:hover:translate-y-0 overflow-hidden">
-      <CardContent className="p-6 flex flex-col h-full">
-        <div className="flex items-start justify-between mb-4">
+    <Card className="group overflow-hidden border-border/70 motion-reduce:hover:translate-y-0">
+      <CardContent className="flex h-full flex-col p-6 sm:p-7">
+        <div className="mb-5 flex items-start justify-between gap-3">
           <Badge
-            variant="secondary"
-            className={categoryColors[course.category] || "bg-muted text-muted-foreground"}
+            variant="outline"
+            className={categoryColors[course.category] ?? "border-border bg-muted/50 text-muted-foreground"}
           >
             {course.categoryLabel}
           </Badge>
-          <span className="text-lg font-serif font-semibold text-crimson">
+          <span className="shrink-0 text-right font-serif text-lg font-semibold tabular-nums text-crimson">
             {course.price}
           </span>
         </div>
 
-        <h3 className="font-serif text-xl font-semibold text-crimson mb-1">
-          {course.title}
-        </h3>
-        <p className="text-xs text-slate-light mb-3">{course.subtitle}</p>
+        <h3 className="mb-1.5 font-serif text-lg font-semibold leading-snug text-ink sm:text-xl">{course.title}</h3>
+        <p className="mb-3 text-xs leading-snug text-slate-light">{course.subtitle}</p>
 
-        <p className="text-sm text-slate leading-relaxed mb-5 flex-1">
-          {course.description}
-        </p>
+        <p className="mb-6 flex-1 text-sm leading-relaxed text-slate">{course.description}</p>
 
-        <div className="flex items-center gap-4 text-xs text-slate-light mb-5">
+        <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-slate-light">
           <span className="flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5" />
+            <Clock className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden />
             {course.duration}
           </span>
           <span className="flex items-center gap-1.5">
-            <CalendarDays className="w-3.5 h-3.5" />
+            <CalendarDays className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden />
             {course.schedule}
           </span>
         </div>
 
         <Link
           href={`/courses/${course.id}`}
-          className="flex items-center justify-center gap-2 w-full rounded-xl bg-crimson py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose group-hover:shadow-md"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.18)]"
         >
-          View Syllabus
-          <ArrowRight className="w-4 h-4" />
+          View syllabus
+          <ArrowRight className="h-4 w-4" />
         </Link>
       </CardContent>
     </Card>

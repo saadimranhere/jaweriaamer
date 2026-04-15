@@ -45,7 +45,7 @@ export default function LoginPage() {
           )}
 
           <div className="space-y-1.5">
-            <Label htmlFor="email" className="text-sm font-medium text-crimson">Email</Label>
+            <Label htmlFor="email" className="text-sm font-medium text-ink">Email</Label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-light" />
               <Input
@@ -60,7 +60,7 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="password" className="text-sm font-medium text-crimson">Password</Label>
+            <Label htmlFor="password" className="text-sm font-medium text-ink">Password</Label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-light" />
               <Input
@@ -74,7 +74,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-crimson"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-light hover:text-brand-accent"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -84,13 +84,13 @@ export default function LoginPage() {
           <div className="flex justify-end -mt-1">
             <Link
               href="/admin/forgot-password"
-              className="text-xs font-medium text-crimson/60 hover:text-crimson underline-offset-2 hover:underline"
+              className="text-xs font-medium text-ink-muted hover:text-brand-accent underline-offset-2 hover:underline"
             >
               Forgot password?
             </Link>
           </div>
 
-          <Button type="submit" disabled={pending} className="w-full bg-crimson hover:bg-rose text-white">
+          <Button type="submit" disabled={pending} className="w-full shadow-sm">
             {pending ? "Signing in..." : "Sign In"}
           </Button>
         </form>

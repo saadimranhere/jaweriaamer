@@ -53,7 +53,7 @@ export default function LeadsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="font-serif text-2xl font-bold text-crimson">Leads & Inquiries</h1>
+        <h1 className="font-serif text-2xl font-semibold tracking-tight text-ink">Leads & Inquiries</h1>
         <p className="text-sm text-slate mt-1">Track and manage student inquiries</p>
       </div>
 
@@ -80,7 +80,7 @@ export default function LeadsPage() {
         ) : leads.length === 0 ? (
           <div className="p-12 text-center">
             <Users className="w-10 h-10 text-slate-light/40 mx-auto mb-3" />
-            <p className="text-sm font-medium text-crimson mb-1">No new inquiries</p>
+            <p className="text-sm font-medium text-ink mb-1">No new inquiries</p>
             <p className="text-xs text-slate-light">Inquiries from the website will appear here.</p>
           </div>
         ) : (
@@ -98,7 +98,7 @@ export default function LeadsPage() {
             <TableBody>
               {leads.map((lead) => (
                 <TableRow key={lead.id}>
-                  <TableCell className="font-medium text-crimson">{lead.name}</TableCell>
+                  <TableCell className="font-medium text-ink">{lead.name}</TableCell>
                   <TableCell>
                     <div className="space-y-0.5">
                       <div className="flex items-center gap-1 text-xs text-slate">

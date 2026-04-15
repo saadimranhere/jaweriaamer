@@ -57,7 +57,7 @@ export default function SettingsPage() {
   if (loading) {
     return (
       <div>
-        <h1 className="font-serif text-2xl font-bold text-crimson mb-6">Settings</h1>
+        <h1 className="font-serif text-2xl font-semibold tracking-tight text-ink mb-6">Settings</h1>
         <div className="p-12 text-center text-slate-light text-sm">Loading settings...</div>
       </div>
     );
@@ -68,7 +68,7 @@ export default function SettingsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="font-serif text-2xl font-bold text-crimson">Global Settings</h1>
+        <h1 className="font-serif text-2xl font-semibold tracking-tight text-ink">Global Settings</h1>
         <p className="text-sm text-slate mt-1">Update site-wide configuration</p>
       </div>
 
@@ -82,7 +82,7 @@ export default function SettingsPage() {
         )}
 
         <div className="rounded-xl border border-border/60 bg-white p-6 shadow-sm">
-          <h2 className="font-serif text-lg font-semibold text-crimson mb-4">WhatsApp Contact</h2>
+          <h2 className="font-serif text-lg font-semibold tracking-tight text-ink mb-4">WhatsApp Contact</h2>
           <div className="space-y-1.5">
             <Label htmlFor="whatsappNumber">WhatsApp Number (with country code)</Label>
             <Input
@@ -99,7 +99,7 @@ export default function SettingsPage() {
 
         <div className="rounded-xl border border-border/60 bg-white p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-serif text-lg font-semibold text-crimson">Results Ticker</h2>
+            <h2 className="font-serif text-lg font-semibold tracking-tight text-ink">Results Ticker</h2>
             {settings.stats.length < 6 && (
               <Button type="button" variant="outline" size="sm" onClick={addStat} className="gap-1">
                 <Plus className="w-3.5 h-3.5" /> Add Stat
@@ -150,7 +150,7 @@ export default function SettingsPage() {
         </div>
 
         <div className="flex gap-3">
-          <Button type="submit" disabled={formPending} className="bg-crimson hover:bg-rose text-white">
+          <Button type="submit" disabled={formPending} className="shadow-sm">
             {formPending ? "Saving..." : "Save Settings"}
           </Button>
         </div>

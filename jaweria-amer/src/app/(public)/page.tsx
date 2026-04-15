@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const sectionKicker = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground";
+const sectionTitle = "font-serif text-2xl font-semibold leading-tight text-ink sm:text-3xl lg:text-[2rem] lg:leading-snug";
+const bodyLead = "text-base leading-relaxed text-slate sm:text-[1.05rem] sm:leading-relaxed";
+
 export default async function HomePage() {
   const featuredCourses = listMarketingCourses(courses).filter((c) => c.featured);
   const settings = await getSettings();
@@ -29,22 +33,27 @@ export default async function HomePage() {
       <WorkshopPromoSection />
 
       {/* Hero */}
-      <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-36 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-crimson via-crimson-light to-crimson" />
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-4 sm:mb-6">
+      <section className="relative overflow-hidden pt-14 pb-24 sm:pt-20 sm:pb-32 lg:pt-24 lg:pb-36">
+        <div className="absolute inset-0 bg-gradient-to-br from-crimson via-crimson to-crimson-dark" />
+        <div
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/75 sm:mb-6 sm:text-xs">
               O Level English Specialist
             </p>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
+            <h1 className="mb-6 font-serif text-[2.1rem] font-semibold leading-[1.12] tracking-tight text-white sm:text-4xl sm:leading-[1.1] lg:text-[2.65rem] lg:leading-[1.08]">
               Master CAIE English
-              <span className="block text-rose mt-2">with Clarity and Care</span>
+              <span className="mt-2 block font-normal text-white/90">with Clarity and Care</span>
             </h1>
-            <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-xl mb-8 sm:mb-10">
-              Rubric-driven instruction, calm accountability, and mentorship
-              that builds independent thinkers. Structured practice that holds
-              up on exam day.
+            <p className="mb-9 max-w-xl text-base leading-relaxed text-white/72 sm:mb-11 sm:text-lg sm:leading-relaxed">
+              Rubric-driven instruction, calm accountability, and mentorship that builds independent thinkers.
+              Structured practice that holds up on exam day.
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -52,66 +61,61 @@ export default async function HomePage() {
                   href={whatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_12px_rgba(0,0,0,0.12)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_18px_rgba(0,0,0,0.15)]"
                 >
                   Book a Clarity Call
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href={whatsAppGroupUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 hover:shadow-md"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-[2px] transition-all hover:border-white/35 hover:bg-white/16"
                 >
                   Join WhatsApp group
                 </Link>
               </div>
               <Link
                 href="/courses"
-                className="inline-flex w-fit items-center gap-1 text-sm font-medium text-white/80 underline-offset-4 transition-colors hover:text-white"
+                className="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-white/75 underline-offset-4 transition-colors hover:text-white"
               >
                 Explore courses
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Ticker */}
-      <section className="bg-white border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Stats */}
+      <section className="border-b border-border/70 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+          <div className="grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-12">
             {settings.stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-serif text-3xl sm:text-4xl font-bold text-crimson mb-1">
+                <p className="mb-1.5 font-serif text-3xl font-semibold tabular-nums text-crimson sm:text-[2.1rem]">
                   {stat.value}
                 </p>
-                <p className="text-sm text-slate">{stat.label}</p>
+                <p className="text-sm leading-snug text-slate">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="py-16 sm:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
-              Why Students Choose Us
-            </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-crimson mb-4">
-              Structure, Not Stress
-            </h2>
-            <p className="text-slate leading-relaxed">
-              We don&apos;t do panic prep. We build repeatable exam thinking
-              through a method that&apos;s rubric-led, feedback-rich, and
-              designed around how Cambridge actually marks.
+      {/* Value proposition */}
+      <section className="bg-cream py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-14 max-w-2xl text-center sm:mb-20">
+            <p className={`${sectionKicker} mb-3`}>Why Students Choose Us</p>
+            <h2 className={`${sectionTitle} mb-5`}>Structure, Not Stress</h2>
+            <p className={bodyLead}>
+              We don&apos;t do panic prep. We build repeatable exam thinking through a method that&apos;s rubric-led,
+              feedback-rich, and designed around how Cambridge actually marks.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-4">
             {[
               {
                 icon: Target,
@@ -136,91 +140,77 @@ export default async function HomePage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="bg-white rounded-xl p-6 border border-border/60 hover:shadow-md hover:border-rose/30 transition-all duration-300"
+                className="rounded-xl border border-border/60 bg-white p-7 shadow-[0_1px_3px_rgba(34,16,18,0.04)] transition-[border-color,box-shadow] duration-300 hover:border-border hover:shadow-[0_6px_24px_rgba(34,16,18,0.06)]"
               >
-                <div className="w-10 h-10 rounded-lg bg-rose/10 flex items-center justify-center mb-4">
-                  <item.icon className="w-5 h-5 text-rose" />
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
+                  <item.icon className="h-5 w-5 text-brand" aria-hidden />
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-crimson mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate leading-relaxed">{item.desc}</p>
+                <h3 className="mb-2 font-serif text-lg font-semibold text-ink">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-slate">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Courses */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10 sm:mb-14">
+      {/* Featured courses */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 flex items-end justify-between gap-6 sm:mb-16">
             <div>
-              <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
-                Programmes
-              </p>
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-crimson">
-                Featured Courses
-              </h2>
+              <p className={`${sectionKicker} mb-3`}>Programmes</p>
+              <h2 className={sectionTitle}>Featured Courses</h2>
             </div>
             <Link
               href="/courses"
-              className="hidden sm:flex items-center gap-1 text-sm text-crimson hover:text-rose font-medium transition-colors"
+              className="hidden items-center gap-1 text-sm font-medium text-ink/80 transition-colors hover:text-brand sm:flex"
             >
-              View All
-              <ChevronRight className="w-4 h-4" />
+              View all
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3">
             {featuredCourses.map((course) => (
               <CourseCard key={course.id} course={course} />
             ))}
           </div>
 
-          <div className="sm:hidden mt-8 text-center">
+          <div className="mt-10 text-center sm:hidden">
             <Link
               href="/courses"
-              className="inline-flex items-center gap-1 text-sm text-crimson hover:text-rose font-medium transition-colors"
+              className="inline-flex items-center gap-1 text-sm font-medium text-ink/80 transition-colors hover:text-brand"
             >
-              View All Courses
-              <ChevronRight className="w-4 h-4" />
+              View all courses
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Course Roadmap */}
-      <section className="py-16 sm:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <p className="text-rose text-sm font-medium tracking-[0.2em] uppercase mb-3">
-              The Method
-            </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-crimson mb-4">
-              Your Step-by-Step Roadmap
-            </h2>
-            <p className="text-slate leading-relaxed">
-              A clear, structured journey from diagnostic to exam day. Every
-              step is designed to build skill, confidence, and control.
+      {/* Roadmap */}
+      <section className="bg-cream py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-14 max-w-2xl text-center sm:mb-20">
+            <p className={`${sectionKicker} mb-3`}>The Method</p>
+            <h2 className={`${sectionTitle} mb-5`}>Your Step-by-Step Roadmap</h2>
+            <p className={bodyLead}>
+              A clear, structured journey from diagnostic to exam day. Every step is designed to build skill,
+              confidence, and control.
             </p>
           </div>
 
-          <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-px bg-border" />
-            <div className="space-y-8 sm:space-y-10">
+          <div className="relative mx-auto max-w-2xl">
+            <div className="absolute bottom-2 left-[1.125rem] top-2 w-px bg-border sm:left-6" aria-hidden />
+            <div className="space-y-10 sm:space-y-12">
               {siteConfig.roadmap.map((step) => (
                 <div key={step.step} className="relative flex gap-5 sm:gap-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-crimson text-white flex items-center justify-center font-serif font-bold text-sm sm:text-base shrink-0 z-10">
+                  <div className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-crimson text-sm font-semibold text-white shadow-sm sm:h-11 sm:w-11 sm:text-base">
                     {step.step}
                   </div>
-                  <div className="pt-1 sm:pt-2">
-                    <h3 className="font-serif text-lg sm:text-xl font-semibold text-crimson mb-1.5">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-slate leading-relaxed">
-                      {step.description}
-                    </p>
+                  <div className="min-w-0 pt-0.5 sm:pt-1">
+                    <h3 className="mb-2 font-serif text-lg font-semibold text-ink sm:text-xl">{step.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -229,46 +219,45 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-24 bg-crimson">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+      {/* CTA */}
+      <section className="border-t border-crimson-dark/20 bg-gradient-to-b from-crimson to-crimson-dark py-20 sm:py-28">
+        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 font-serif text-2xl font-semibold leading-tight text-white sm:text-3xl lg:text-[2rem]">
             Ready to Build a Clear Plan?
           </h2>
-          <p className="text-white/70 leading-relaxed mb-4 max-w-lg mx-auto">
-            Book a short clarity call to discuss your goals, current level, and
-            the programme that fits. No pressure, no commitment.
+          <p className="mx-auto mb-4 max-w-lg leading-relaxed text-white/75">
+            Book a short clarity call to discuss your goals, current level, and the programme that fits. No pressure,
+            no commitment.
           </p>
-          <p className="mb-8 text-sm text-white/60 max-w-lg mx-auto">
-            Or write to{" "}
-            <ContactEmailLink variant="onDark" className="font-medium" />
+          <p className="mx-auto mb-10 max-w-lg text-sm text-white/55">
+            Or write to <ContactEmailLink variant="onDark" className="font-medium" />
           </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
             <Link
               href={whatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_14px_rgba(0,0,0,0.2)] transition-all hover:bg-brand-accent sm:min-w-[200px]"
             >
               Book a Clarity Call
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href={whatsAppGroupUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 hover:shadow-md sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-white/18 sm:min-w-[200px]"
             >
               Join WhatsApp group
             </Link>
           </div>
-          <p className="mt-6 text-center">
+          <p className="mt-8">
             <Link
               href="/courses"
-              className="inline-flex items-center gap-1 text-sm font-medium text-white/70 underline-offset-4 transition-colors hover:text-white"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-white/65 underline-offset-4 transition-colors hover:text-white"
             >
               Browse courses
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </p>
         </div>
