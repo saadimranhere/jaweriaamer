@@ -90,10 +90,10 @@ export default function SettingsPage() {
               name="whatsappNumber"
               value={settings.whatsappNumber}
               onChange={(e) => setSettings({ ...settings, whatsappNumber: e.target.value })}
-              placeholder="923001234567"
+              placeholder="923253708069"
               required
             />
-            <p className="text-xs text-slate-light">Format: country code + number, no spaces or dashes (e.g., 923001234567)</p>
+            <p className="text-xs text-slate-light">Format: country code + number, no spaces or dashes (e.g., 923253708069)</p>
           </div>
         </div>
 

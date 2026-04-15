@@ -164,7 +164,7 @@ export interface SiteSettings {
 }
 
 const defaultSettings: SiteSettings = {
-  whatsappNumber: "923001234567",
+  whatsappNumber: "923253708069",
   stats: [
     { value: "95%", label: "Students scored A*/A" },
     { value: "500+", label: "Students mentored" },

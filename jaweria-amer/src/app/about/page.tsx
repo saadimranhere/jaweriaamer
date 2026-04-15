@@ -8,7 +8,7 @@ import {
   Heart,
   CheckCircle2,
 } from "lucide-react";
-import { whatsAppUrl } from "@/lib/contact";
+import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "About",
@@ -172,15 +172,25 @@ export default function AboutPage() {
             A short call to understand where you are, where you want to be, and
             whether this is the right fit. No obligation.
           </p>
-          <Link
-            href={whatsAppUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
-          >
-            Book a Clarity Call
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href={whatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md sm:w-auto"
+            >
+              Book a Clarity Call
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href={whatsAppGroupUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 sm:w-auto"
+            >
+              Join WhatsApp group
+            </Link>
+          </div>
         </div>
       </section>
     </>

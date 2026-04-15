@@ -9,7 +9,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { courses, siteConfig } from "@/lib/data";
-import { whatsAppUrl } from "@/lib/contact";
+import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { CourseCard } from "@/components/course-card";
 import { WorkshopPromoSection } from "@/components/workshop-promo";
 
@@ -42,21 +42,32 @@ export default function HomePage() {
               that builds independent thinkers. Structured practice that holds
               up on exam day.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href={whatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+                >
+                  Book a Clarity Call
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href={whatsAppGroupUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 hover:shadow-md"
+                >
+                  Join WhatsApp group
+                </Link>
+              </div>
               <Link
                 href="/courses"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+                className="inline-flex w-fit items-center gap-1 text-sm font-medium text-white/80 underline-offset-4 transition-colors hover:text-white"
               >
-                Explore Courses
+                Explore courses
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href={whatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 hover:shadow-md"
-              >
-                Book a Clarity Call
               </Link>
             </div>
           </div>
@@ -224,23 +235,34 @@ export default function HomePage() {
             Book a short clarity call to discuss your goals, current level, and
             the programme that fits. No pressure, no commitment.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href={whatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md sm:w-auto"
             >
               Book a Clarity Call
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/courses"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 hover:shadow-md"
+              href={whatsAppGroupUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 hover:shadow-md sm:w-auto"
             >
-              Browse Courses
+              Join WhatsApp group
             </Link>
           </div>
+          <p className="mt-6 text-center">
+            <Link
+              href="/courses"
+              className="inline-flex items-center gap-1 text-sm font-medium text-white/70 underline-offset-4 transition-colors hover:text-white"
+            >
+              Browse courses
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </p>
         </div>
       </section>
     </>

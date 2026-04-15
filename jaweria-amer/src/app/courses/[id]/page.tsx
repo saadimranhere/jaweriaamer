@@ -9,7 +9,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { courses } from "@/lib/data";
-import { contact, whatsAppUrl } from "@/lib/contact";
+import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
@@ -202,12 +202,12 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href={whatsAppUrl(contact.messageDefault)}
+                  href={whatsAppGroupUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-navy py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-navy-light hover:shadow-md"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-navy/15 bg-white py-3 text-sm font-medium text-navy shadow-sm transition-all hover:border-gold/40 hover:bg-cream/60"
                 >
-                  Book a Clarity Call
+                  Join WhatsApp group
                 </Link>
               </div>
 

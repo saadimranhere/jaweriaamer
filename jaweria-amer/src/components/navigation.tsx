@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { siteConfig } from "@/lib/data";
-import { whatsAppUrl } from "@/lib/contact";
+import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
@@ -72,14 +72,29 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href={whatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl bg-gold px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
-            >
-              Get in Touch
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href={whatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl bg-gold px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+              >
+                WhatsApp
+              </Link>
+              <Link
+                href={whatsAppGroupUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "rounded-xl border px-3 py-2.5 text-sm font-medium shadow-sm transition-all",
+                  isTransparent
+                    ? "border-white/35 bg-white/10 text-white hover:bg-white/15"
+                    : "border-border bg-white text-navy hover:border-gold/40 hover:bg-cream/50"
+                )}
+              >
+                Group
+              </Link>
+            </div>
           </div>
 
           <Sheet open={open} onOpenChange={setOpen}>
@@ -110,15 +125,26 @@ export function Navigation() {
                     {item.label}
                   </Link>
                 ))}
-                <Link
-                  href={whatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="mt-2 rounded-xl bg-gold px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
-                >
-                  Get in Touch
-                </Link>
+                <div className="mt-2 flex flex-col gap-2">
+                  <Link
+                    href={whatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="rounded-xl bg-gold px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:bg-gold-dark hover:shadow-md"
+                  >
+                    WhatsApp
+                  </Link>
+                  <Link
+                    href={whatsAppGroupUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="rounded-xl border border-border bg-white px-5 py-2.5 text-center text-sm font-medium text-navy shadow-sm transition-all hover:border-gold/40 hover:bg-cream/50"
+                  >
+                    WhatsApp group
+                  </Link>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
