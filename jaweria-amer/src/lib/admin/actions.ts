@@ -34,7 +34,7 @@ export async function loginAction(_prev: unknown, formData: FormData) {
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0].message };
+    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   }
 
   const result = await login(parsed.data.email, parsed.data.password);
@@ -70,7 +70,7 @@ export async function saveCourseAction(_prev: unknown, formData: FormData) {
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0].message };
+    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   }
 
   await saveCourse({
@@ -108,7 +108,7 @@ export async function saveResourceAction(_prev: unknown, formData: FormData) {
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0].message };
+    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   }
 
   await saveResource({
@@ -169,7 +169,7 @@ export async function saveSettingsAction(_prev: unknown, formData: FormData) {
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0].message };
+    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   }
 
   await saveSettings(parsed.data);

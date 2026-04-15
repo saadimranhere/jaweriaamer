@@ -88,11 +88,13 @@ export default function ResourcesPage() {
           <p className="text-sm text-slate mt-1">Upload and manage PDFs and documents</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogTrigger asChild>
-            <Button className="bg-navy hover:bg-navy-light text-white gap-2">
-              <Plus className="w-4 h-4" /> Upload Resource
-            </Button>
-          </DialogTrigger>
+          <Button
+            type="button"
+            className="bg-navy hover:bg-navy-light text-white gap-2"
+            onClick={() => setDialogOpen(true)}
+          >
+            <Plus className="w-4 h-4" /> Upload Resource
+          </Button>
           <DialogContent className="bg-white max-w-md">
             <DialogHeader>
               <DialogTitle className="font-serif text-lg text-navy">Upload Resource</DialogTitle>

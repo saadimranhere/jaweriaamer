@@ -1,50 +1,60 @@
 # Jaweria Amer Academy
 
-A premium Cambridge O Level and A Level learning platform for high-performing students and families in Karachi who want structured, exam-focused English preparation.
+A premium Cambridge O Level and A Level learning platform designed for high-performing students aiming for top academic results.
 
 ## Overview
 
-The site presents programmes, a free resource vault, and a clear teaching philosophy. Content is built around how Cambridge examiners award marks: rubric-led practice, explicit outcomes, and calm mentorship rather than syllabus-only coverage.
+Jaweria Amer Academy is a structured, exam-focused learning platform built around how Cambridge examiners actually award marks. The site presents premium academic offerings through a calm, high-trust experience designed for serious students and parents—rubric-led practice, explicit outcomes, and mentorship rather than syllabus-only coverage.
 
 ## Features
 
-- **Course directory** — Filterable programmes (O Level, A Level, Literature, Creative Writing) with cards linking to detail pages.
-- **Course detail pages** — Statically generated routes under `/courses/[id]` with outcomes, syllabus bullets, curriculum modules, pricing, and WhatsApp enrolment CTAs.
-- **Resource vault** — `/resources` lists past papers, marking schemes, examiner reports, and checklists (placeholders for downloads until real assets are wired in).
-- **About** — Bio, philosophy, and differentiation for trust-building.
-- **Legal** — `/privacy` and `/terms` with dated copy.
-- **Admin area** — Password-protected dashboard under `/admin` (courses, resources, leads, settings) using cookie-based sessions. **Do not expose admin credentials;** restrict to trusted operators only.
-- **WhatsApp** — Floating action button and contextual links use numbers and default messages from `siteConfig` in `src/lib/data.ts`.
-- **Responsive layout** — Mobile-first navigation, footer, and back-to-top control.
-- **SEO** — App Router metadata, Open Graph and Twitter defaults, canonical URLs on main public routes, `noindex` on admin.
+- Course directory with structured academic pathways
+- Individual course pages with outcomes, syllabus breakdown, and curriculum details
+- Free resource vault with past papers, marking schemes, examiner reports, and checklists
+- Mobile-first responsive design
+- SEO-ready static pages for strong performance
+- WhatsApp inquiry and enrollment flow
+- Centralized course data in `src/lib/data.ts` for straightforward content updates
+- Legal pages (`/privacy`, `/terms`) and a password-protected admin area (`/admin`) for operations when configured
 
 ## Tech stack
 
-- [Next.js](https://nextjs.org/) (App Router)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/) v4
-- [shadcn/ui](https://ui.shadcn.com/) patterns (`src/components/ui/`)
-- [Lucide React](https://lucide.dev/) icons
-- [Zod](https://zod.dev/) (where validation is used)
-- [Sonner](https://sonner.emilkowal.ski/) toasts in admin
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Lucide React
 
-## Repository layout
+Also used where relevant: Zod (validation in server actions), Sonner (admin toasts).
+
+## Project structure
+
+**Routes**
+
+- `/` — Homepage
+- `/courses` — Course directory
+- `/courses/[id]` — Course detail pages (statically generated from `courses` in `src/lib/data.ts`)
+- `/resources` — Free Vault
+- `/about` — Professional bio and teaching philosophy
+- `/privacy`, `/terms` — Legal
+- `/admin` — Dashboard (login at `/admin/login`; requires environment variables—see below)
+
+**Code (high level)**
 
 | Path | Purpose |
 |------|--------|
-| `src/app/` | Routes, layouts, and `globals.css`. Public routes: `/`, `/courses`, `/courses/[id]`, `/resources`, `/about`, `/privacy`, `/terms`. Admin: `/admin/login`, `/admin/*` dashboard. |
-| `src/lib/data.ts` | **Primary content source** — `courses`, `resources`, and `siteConfig` (name, SEO defaults, WhatsApp, email, stats, roadmap, navigation). |
-| `src/lib/utils.ts` | Shared helpers (e.g. `cn` for class names). |
-| `src/lib/admin/` | Admin auth, server actions, and persistence helpers. |
-| `src/components/` | Shared UI: navigation, footer, course cards, WhatsApp button, etc. |
-| `src/components/admin/` | Admin chrome (sidebar, topbar). |
-| `src/middleware.ts` | Protects `/admin` (except login) and sends `X-Robots-Tag` for admin routes. |
-| `public/` | Static assets served as-is. |
-| `components.json` | shadcn/ui configuration. |
+| `src/app/` | App Router pages, layouts, `globals.css` |
+| `src/lib/data.ts` | **Primary content source** — `courses`, `resources`, `siteConfig` (SEO defaults, WhatsApp, navigation, etc.) |
+| `src/lib/admin/` | Admin auth and server actions |
+| `src/components/` | Shared UI; `src/components/admin/` for admin chrome |
+| `next.config.ts` | Sends `X-Robots-Tag: noindex, nofollow` on `/admin/*` (no deprecated middleware) |
+| `public/` | Static assets |
 
 ## Local development
 
 **Requirements:** Node.js 20.9+ (see `engines` in `package.json`).
+
+Install dependencies and configure environment:
 
 ```bash
 cd jaweria-amer
@@ -52,7 +62,9 @@ npm install
 cp .env.example .env.local
 ```
 
-Edit `.env.local` with values from the [Environment variables](#environment-variables) section. For local browsing of public pages only, you can omit admin variables until you use `/admin`.
+Edit `.env.local` using [Environment variables](#environment-variables). You can skip admin-related variables until you use `/admin`.
+
+Start the dev server:
 
 ```bash
 npm run dev
@@ -64,11 +76,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Development server (Turbopack). |
-| `npm run build` | Production build. |
-| `npm run start` | Serve the production build locally. |
-| `npm run lint` | ESLint. |
-| `npm run typecheck` | TypeScript check without emit. |
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Run production build locally |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript check (no emit) |
 
 ## Build
 
@@ -76,57 +88,58 @@ Open [http://localhost:3000](http://localhost:3000).
 npm run build
 ```
 
-Resolve any TypeScript or ESLint issues before deploying. Production builds expect `SESSION_SECRET` to be set when admin routes are used at runtime (see below).
+Resolve any TypeScript or ESLint issues before deploying. Set `SESSION_SECRET` in production when using `/admin` (see below).
 
 ## Environment variables
 
-Copy `.env.example` to `.env.local` for development. On Vercel, define the same keys under **Project → Settings → Environment Variables** for Production (and Preview if you use admin there).
+Copy `.env.example` to `.env.local` for development. On Vercel, set the same keys under **Project → Settings → Environment Variables** (Production and Preview as needed).
 
 | Variable | Scope | Description |
 |----------|--------|-------------|
-| `NEXT_PUBLIC_SITE_URL` | Public | Canonical origin, no trailing slash (e.g. `https://www.yourdomain.com`). Drives `metadataBase`, Open Graph resolution, and canonical URLs. |
-| `SESSION_SECRET` | Server | Secret embedded in the admin session cookie. **Required in production** when using `/admin`. Use a long random value (e.g. `openssl rand -base64 32`). |
-| `ADMIN_EMAIL` | Server | Login email for `/admin/login`. |
-| `ADMIN_PASSWORD` | Server | Login password for `/admin/login`. Use a strong, unique password. |
+| `NEXT_PUBLIC_SITE_URL` | Public | Site origin, no trailing slash (e.g. `https://www.yourdomain.com`). Used for metadata and canonical URLs. |
+| `SESSION_SECRET` | Server | Admin session signing. **Required in production** for `/admin`. Prefer a long random value (e.g. `openssl rand -base64 32`). |
+| `ADMIN_EMAIL` | Server | `/admin/login` email |
+| `ADMIN_PASSWORD` | Server | `/admin/login` password (use a strong, unique value) |
 
-**WhatsApp and contact copy** live in `src/lib/data.ts` (`whatsappNumber`, `whatsappMessage`, `email`, etc.), not in environment variables, so marketing can update them in one file.
+WhatsApp number, default message, and public contact fields live in `src/lib/data.ts`, not in env vars.
 
-Never commit real `.env` or `.env.local` files. `.env.example` contains placeholders only.
+Do not commit `.env` or `.env.local`. `.env.example` uses placeholders only.
 
 ## Deployment (Vercel)
 
-1. Connect the Git repository (root of this app is the folder containing `package.json`).
-2. **Framework preset:** Next.js. **Build command:** `npm run build`. **Output:** default (`.next`).
-3. Set `NEXT_PUBLIC_SITE_URL` to your production URL.
-4. Set `SESSION_SECRET`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` if you use the admin dashboard.
-5. Deploy. No `vercel.json` is required for a standard App Router setup.
+1. Point the project at this directory (the folder that contains `package.json`).
+2. **Node.js:** use **20.x** (Next.js 16 requires `>=20.9.0`; Node 18 is not supported).
+3. Framework: **Next.js**. Build: `npm run build`. Output: default.
+4. Set `NEXT_PUBLIC_SITE_URL` to the production URL.
+5. If you use admin: set `SESSION_SECRET`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD`.
+6. Deploy. A custom `vercel.json` is not required for a standard App Router app.
 
-Preview deployments should also set `NEXT_PUBLIC_SITE_URL` to the preview URL if you care about accurate OG tags on previews; otherwise metadata falls back to the configured value.
+For accurate Open Graph URLs on preview deployments, set `NEXT_PUBLIC_SITE_URL` to the preview URL for that environment.
 
 ## Brand and positioning
 
 - **Tone:** Mentor–scholar: calm, structured, high-trust.
-- **Audience:** Serious O/A Level students and parents in Karachi (and online where applicable).
-- **Promise:** Exam-oriented structure aligned to how papers are marked, without hype or grade guarantees in the copy.
+- **Audience:** Serious O/A Level students and parents (Karachi-focused positioning in on-site copy where relevant).
+- **Promise:** Exam-oriented structure aligned to how papers are marked, without hype or implied grade guarantees.
 
-Visual design tokens and typography are defined in `src/app/globals.css` and Tailwind theme extensions; keep changes minimal unless updating brand guidelines.
+Design tokens live in `src/app/globals.css` and Tailwind configuration; change sparingly unless updating brand guidelines.
 
 ## Maintaining course and site content
 
-1. Open `src/lib/data.ts`.
-2. **`courses` array** — Each object must satisfy the `Course` interface (`id`, `title`, `category`, `curriculum`, etc.). The `id` field becomes the URL segment (`/courses/o-level-english-1123`). After adding a course, `generateStaticParams` in `src/app/courses/[id]/page.tsx` will pick it up automatically on the next build.
-3. **`resources` array** — Same pattern with the `Resource` interface and `/resources` UI.
-4. **`siteConfig`** — Global title, meta description, WhatsApp link, stats, roadmap steps, and main navigation labels/links.
+1. Edit `src/lib/data.ts`.
+2. **`courses`** — Each `id` becomes `/courses/[id]`. Match the `Course` type. New entries are picked up by `generateStaticParams` on the next build.
+3. **`resources`** — Match the `Resource` type for the vault listing.
+4. **`siteConfig`** — Site title, meta description, WhatsApp, stats, roadmap, navigation.
 
-Run `npm run build` after substantive data edits to confirm types and static generation still succeed.
+After material edits, run `npm run build` to confirm types and static generation.
 
 ## Optional future improvements
 
-- Wire resource “Download” actions to real PDFs or external CAIE links.
-- Replace the About page portrait placeholder with a production image asset.
-- Add `sitemap.ts` / `robots.ts` if you want finer control than metadata alone.
-- Move admin credentials to a database or SSO if multiple staff need access.
-- Add automated tests (e.g. Playwright) for critical flows and smoke checks on deploy.
+- Wire vault downloads to real PDFs or official CAIE links.
+- Replace the About page portrait placeholder with a production image.
+- Add `sitemap.ts` / `robots.ts` if you want more control than layout metadata alone.
+- Stronger admin auth (e.g. SSO) if multiple operators need access.
+- Automated smoke or E2E tests on deploy.
 
 ## License
 

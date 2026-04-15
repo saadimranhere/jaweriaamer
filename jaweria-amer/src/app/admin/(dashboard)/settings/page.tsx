@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useActionState, useCallback } from "react";
-import { Plus, Trash2, Settings } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

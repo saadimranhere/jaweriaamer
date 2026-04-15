@@ -1,7 +1,4 @@
-/**
- * Canonical site URL for metadata (Open Graph, etc.).
- * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://www.example.com).
- */
+/** Canonical origin for metadata; override with NEXT_PUBLIC_SITE_URL in production. */
 export function getSiteUrl(): URL {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (raw) {
