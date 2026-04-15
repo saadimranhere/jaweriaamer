@@ -82,7 +82,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e8e4e0;
   --input: #e8e4e0;
-  --ring: #c62839;
+  --ring: #e91e63;
   --chart-1: #c62839;
   --chart-2: #0b1d3a;
   --chart-3: #4a5568;
@@ -96,7 +96,7 @@
   --sidebar-accent: #fce4ec;
   --sidebar-accent-foreground: #0b1d3a;
   --sidebar-border: #e8e4e0;
-  --sidebar-ring: #c62839;
+  --sidebar-ring: #e91e63;
 }
 
 @layer base {

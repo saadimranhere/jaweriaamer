@@ -15,7 +15,7 @@ import { updateLeadStatusAction, deleteLeadAction } from "@/lib/admin/actions";
 import type { Lead } from "@/lib/admin/store";
 
 const statusOptions = [
-  { value: "new", label: "New", className: "bg-blue-50 text-blue-600" },
+  { value: "new", label: "New", className: "bg-brand-soft text-brand" },
   { value: "contacted", label: "Contacted", className: "bg-amber-50 text-amber-600" },
   { value: "enrolled", label: "Enrolled", className: "bg-green-50 text-green-600" },
 ];
@@ -59,9 +59,9 @@ export default function LeadsPage() {
 
       {!loading && leads.length > 0 && (
         <div className="grid grid-cols-3 gap-3 mb-6">
-          <div className="bg-blue-50 rounded-lg p-3 text-center">
-            <p className="font-serif text-xl font-bold text-blue-600">{newCount}</p>
-            <p className="text-xs text-blue-600/70">New</p>
+          <div className="rounded-lg bg-brand-soft p-3 text-center">
+            <p className="font-serif text-xl font-bold text-brand">{newCount}</p>
+            <p className="text-xs text-brand/80">New</p>
           </div>
           <div className="bg-amber-50 rounded-lg p-3 text-center">
             <p className="font-serif text-xl font-bold text-amber-600">{contactedCount}</p>

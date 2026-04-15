@@ -13,10 +13,10 @@ export default async function AdminDashboard() {
   const activeCourses = courses.filter((c) => c.status === "active").length;
 
   const stats = [
-    { label: "Total Courses", value: courses.length, icon: BookOpen, href: "/admin/courses", color: "bg-blue-50 text-blue-600" },
-    { label: "Active Courses", value: activeCourses, icon: TrendingUp, href: "/admin/courses", color: "bg-green-50 text-green-600" },
-    { label: "Resources", value: resources.length, icon: FolderOpen, href: "/admin/resources", color: "bg-amber-50 text-amber-600" },
-    { label: "New Leads", value: newLeads, icon: Users, href: "/admin/leads", color: "bg-purple-50 text-purple-600" },
+    { label: "Total Courses", value: courses.length, icon: BookOpen, href: "/admin/courses", color: "bg-brand-soft text-brand" },
+    { label: "Active Courses", value: activeCourses, icon: TrendingUp, href: "/admin/courses", color: "bg-cream-dark text-navy" },
+    { label: "Resources", value: resources.length, icon: FolderOpen, href: "/admin/resources", color: "bg-brand-soft/70 text-brand" },
+    { label: "New Leads", value: newLeads, icon: Users, href: "/admin/leads", color: "bg-brand-soft text-brand-accent" },
   ];
 
   return (
@@ -61,9 +61,9 @@ export default async function AdminDashboard() {
                     <p className="text-xs text-slate-light">{lead.email}</p>
                   </div>
                   <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                    lead.status === "new" ? "bg-blue-50 text-blue-600" :
-                    lead.status === "contacted" ? "bg-amber-50 text-amber-600" :
-                    "bg-green-50 text-green-600"
+                    lead.status === "new" ? "bg-brand-soft text-brand" :
+                    lead.status === "contacted" ? "bg-amber-50 text-amber-700" :
+                    "bg-green-50 text-green-700"
                   }`}>
                     {lead.status}
                   </span>
