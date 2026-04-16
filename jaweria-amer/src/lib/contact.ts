@@ -9,8 +9,12 @@ export const contact = {
   whatsapp: "923253708069",
   whatsappGroup: "https://chat.whatsapp.com/G5sHrVqzo7NCSUMhSh9w3U",
   youtube: "https://www.youtube.com/@englishwithjaweria",
+  /** Featured long-form lesson for the About page embed (`youtube.com/watch?v=…` ID). */
+  youtubeFeaturedVideoId: "LzuHkJ4QfCw",
   drive: "https://drive.google.com/drive/folders/1B3MN_5TiHfknp6Ao4BwlFRlmc89F1AHF",
   instagram: "https://instagram.com/englishwithjaweria",
+  /** Public Facebook page — leave empty to hide the Facebook card on marketing pages. */
+  facebook: "",
   email: "jaweriaamer001@gmail.com",
   /** Default inquiry (general courses / clarity call). */
   messageDefault:
