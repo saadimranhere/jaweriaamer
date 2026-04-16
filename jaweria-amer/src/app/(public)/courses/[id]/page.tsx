@@ -11,6 +11,7 @@ import {
 import { courses } from "@/lib/data";
 import { getPublicCoursePriceLabel } from "@/lib/pricing-display";
 import { isCourseCategoryOffered, listMarketingCourses } from "@/lib/course-offerings";
+import { TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { Badge } from "@/components/ui/badge";
@@ -45,6 +46,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       title: course.title,
       description: course.description,
       type: "website",
+      url: `/courses/${course.id}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -166,23 +168,27 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
               </div>
 
               <div className="space-y-3 border-t border-border pt-6">
-                <Link
+                <TrackedWhatsAppLink
                   href={whatsAppUrl(`Hi, I'm interested in the ${course.title} programme.`)}
+                  location="course_detail"
+                  variant="direct"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.15)]"
                 >
                   Enquire on WhatsApp
                   <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
+                </TrackedWhatsAppLink>
+                <TrackedWhatsAppLink
                   href={whatsAppGroupUrl()}
+                  location="course_detail"
+                  variant="group"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-medium text-ink transition-colors hover:border-border hover:bg-muted/40"
                 >
                   Join WhatsApp group
-                </Link>
+                </TrackedWhatsAppLink>
               </div>
 
               <div className="space-y-3 border-t border-border pt-6 text-sm text-slate">

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import { workshopRegisterUrl } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
@@ -42,14 +42,16 @@ export function StickyWorkshopBar() {
         <p className="min-w-0 flex-1 text-xs font-medium leading-snug text-white sm:text-sm">
           English Writing Workshop — <span className="font-semibold">Limited Seats</span>
         </p>
-        <Link
+        <TrackedWhatsAppLink
           href={workshopRegisterUrl()}
+          location="sticky_workshop_bar"
+          variant="direct"
           target="_blank"
           rel="noopener noreferrer"
           className="shrink-0 rounded-xl bg-white px-3 py-1.5 text-center text-xs font-semibold text-brand shadow-sm transition-colors hover:bg-brand-soft sm:px-4 sm:text-sm"
         >
           Reserve Now
-        </Link>
+        </TrackedWhatsAppLink>
       </div>
     </div>
   );

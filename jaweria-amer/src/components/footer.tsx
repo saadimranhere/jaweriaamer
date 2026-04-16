@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { SVGProps } from "react";
 import { Mail, MapPin, MessageCircle, Phone, PlayCircle, UsersRound } from "lucide-react";
+import { TrackedOutboundLink, TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import { siteConfig } from "@/lib/data";
 import { ContactEmailLink } from "@/components/contact-email-link";
 import { contact, telUrl, whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
@@ -74,37 +75,42 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
+                <TrackedWhatsAppLink
                   href={whatsappDirectHref}
+                  location="footer"
+                  variant="direct"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-rose"
                 >
                   <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose" aria-hidden />
                   <span>Message on WhatsApp</span>
-                </a>
+                </TrackedWhatsAppLink>
               </li>
               <li>
-                <a
+                <TrackedWhatsAppLink
                   href={whatsappGroupHref}
+                  location="footer"
+                  variant="group"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-rose"
                 >
                   <UsersRound className="mt-0.5 h-4 w-4 shrink-0 text-rose" aria-hidden />
                   <span>WhatsApp community</span>
-                </a>
+                </TrackedWhatsAppLink>
               </li>
               <li>
-                <a
+                <TrackedOutboundLink
                   href={contact.youtube}
+                  channel="youtube"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-start gap-2.5 text-white/70 transition-colors hover:text-rose"
                 >
                   <PlayCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose" aria-hidden />
                   <span>YouTube — English with Jaweria</span>
-                </a>
+                </TrackedOutboundLink>
               </li>
               <li className="flex items-start gap-2.5 text-white/70">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-rose" />
@@ -145,15 +151,16 @@ export function Footer() {
             <p className="text-center text-xs text-white/50 sm:text-left">
               © 2026 Jaweria Amer. All Rights Reserved.
             </p>
-            <a
+            <TrackedOutboundLink
               href={contact.instagram}
+              channel="instagram"
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-rose/50 hover:text-rose"
               aria-label="English with Jaweria on Instagram"
             >
               <InstagramGlyph className="h-5 w-5" />
-            </a>
+            </TrackedOutboundLink>
           </div>
           <p className="mt-4 max-w-4xl text-center text-[11px] leading-relaxed text-[rgb(200,160,165)]/95 sm:text-left">
             CAIE™ and O Level™ are trademarks of Cambridge

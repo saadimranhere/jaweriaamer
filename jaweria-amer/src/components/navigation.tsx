@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { siteConfig } from "@/lib/data";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
+import { trackWhatsAppClick } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
@@ -82,6 +83,7 @@ export function Navigation() {
                 href={whatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick({ location: "nav_desktop", variant: "direct" })}
                 className="rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_2px_10px_rgba(112,20,20,0.15)]"
               >
                 WhatsApp
@@ -90,6 +92,7 @@ export function Navigation() {
                 href={whatsAppGroupUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick({ location: "nav_desktop", variant: "group" })}
                 className={cn(
                   "rounded-xl border px-3 py-2.5 text-sm font-medium transition-all",
                   isTransparent
@@ -139,7 +142,10 @@ export function Navigation() {
                     href={whatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      trackWhatsAppClick({ location: "nav_mobile_sheet", variant: "direct" });
+                      setOpen(false);
+                    }}
                     className="rounded-xl bg-primary py-2.5 text-center text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-brand-accent"
                   >
                     WhatsApp
@@ -148,7 +154,10 @@ export function Navigation() {
                     href={whatsAppGroupUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      trackWhatsAppClick({ location: "nav_mobile_sheet", variant: "group" });
+                      setOpen(false);
+                    }}
                     className="rounded-xl border border-border bg-white py-2.5 text-center text-sm font-medium text-ink transition-colors hover:bg-muted/50"
                   >
                     WhatsApp group

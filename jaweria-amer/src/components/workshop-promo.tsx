@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import { workshopRegisterUrl } from "@/lib/contact";
 
 /**
@@ -38,15 +38,17 @@ export function WorkshopPromoSection() {
         <p className="mt-3 text-sm leading-relaxed text-slate sm:text-[0.9375rem]">
           Limited seats available
         </p>
-        <Link
+        <TrackedWhatsAppLink
           href={registerHref}
+          location="workshop_promo"
+          variant="direct"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.15)] focus-visible:ring-2 focus-visible:ring-ring/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           Reserve via WhatsApp
           <ArrowRight className="size-4 shrink-0" aria-hidden />
-        </Link>
+        </TrackedWhatsAppLink>
       </section>
     </div>
   );

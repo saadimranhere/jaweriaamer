@@ -1,6 +1,29 @@
+import type { Metadata } from "next";
 import { ExternalLink, FolderOpen, PlayCircle } from "lucide-react";
+import { TrackedOutboundLink } from "@/components/analytics/tracked-links";
 import { contact } from "@/lib/contact";
+import { siteConfig } from "@/lib/data";
 import { ResourcesHub } from "@/components/resources-hub";
+
+export const metadata: Metadata = {
+  title: "Resources",
+  description:
+    "Free vault: notes, topical worksheets, past papers, examiner reports, and checklists for Cambridge O Level English (1123).",
+  alternates: { canonical: "/resources" },
+  openGraph: {
+    title: `Resources | ${siteConfig.name}`,
+    description:
+      "Notes, worksheets, past papers, examiner reports, and checklists — organised for purposeful practice.",
+    type: "website",
+    url: "/resources",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Resources | ${siteConfig.name}`,
+    description:
+      "Notes, worksheets, past papers, examiner reports, and checklists — organised for purposeful practice.",
+  },
+};
 
 export default function ResourcesPage() {
   return (
@@ -35,15 +58,16 @@ export default function ResourcesPage() {
                 Lesson-style explanations, exam thinking, and revision support — built to complement
                 the materials below.
               </p>
-              <a
+              <TrackedOutboundLink
                 href={contact.youtube}
+                channel="youtube"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex w-fit items-center gap-2 rounded-xl bg-crimson px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-rose"
               >
                 Open YouTube channel
                 <ExternalLink className="h-4 w-4 opacity-90" aria-hidden />
-              </a>
+              </TrackedOutboundLink>
             </div>
 
             <div className="flex flex-col justify-between rounded-2xl border border-rose/25 bg-gradient-to-br from-crimson via-crimson to-crimson-light p-8 text-white shadow-md sm:p-10">
@@ -58,15 +82,16 @@ export default function ResourcesPage() {
                   for students who want the complete archive alongside this hub.
                 </p>
               </div>
-              <a
+              <TrackedOutboundLink
                 href={contact.drive}
+                channel="drive"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl bg-rose px-5 py-3 text-sm font-semibold text-crimson shadow-sm transition-all hover:bg-rose-dark hover:text-white"
               >
                 Open full pack
                 <ExternalLink className="h-4 w-4 opacity-90" aria-hidden />
-              </a>
+              </TrackedOutboundLink>
             </div>
           </div>
         </div>

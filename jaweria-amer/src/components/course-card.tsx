@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { Clock, CalendarDays, ArrowRight, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TrackedCourseSyllabusLink, TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import type { Course } from "@/lib/data";
 import { getPublicCoursePriceLabel } from "@/lib/pricing-display";
 import { whatsAppUrl } from "@/lib/contact";
@@ -46,8 +46,10 @@ export function CourseCard({ course }: { course: Course }) {
         </div>
 
         <div className="flex flex-col gap-2">
-          <a
+          <TrackedWhatsAppLink
             href={whatsAppUrl(`Hi, I'm interested in the ${course.title} programme.`)}
+            location="course_card"
+            variant="direct"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.18)]"
@@ -55,13 +57,14 @@ export function CourseCard({ course }: { course: Course }) {
             <MessageCircle className="h-4 w-4" aria-hidden />
             Enquire on WhatsApp
             <ArrowRight className="h-4 w-4" />
-          </a>
-          <Link
+          </TrackedWhatsAppLink>
+          <TrackedCourseSyllabusLink
             href={`/courses/${course.id}`}
+            courseId={course.id}
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-medium text-ink transition-colors hover:border-border hover:bg-muted/40"
           >
             View syllabus
-          </Link>
+          </TrackedCourseSyllabusLink>
         </div>
       </CardContent>
     </Card>

@@ -17,6 +17,7 @@ import {
   type Resource,
   type ResourceHubCategory,
 } from "@/lib/data";
+import { trackResourceView } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const categoryIcon: Record<ResourceHubCategory, typeof BookOpen> = {
@@ -234,6 +235,9 @@ function ResourceCard({ resource }: { resource: Resource }) {
       <div className="mt-6">
         <Link
           href={`/resources/view/${resource.id}`}
+          onClick={() =>
+            trackResourceView(resource.id, resource.title, { interaction: "hub_listing" })
+          }
           className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-center text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.15)]"
         >
           <Eye className="h-4 w-4 shrink-0" aria-hidden />

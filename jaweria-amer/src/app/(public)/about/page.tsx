@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import {
   ArrowRight,
   GraduationCap,
@@ -10,6 +9,7 @@ import {
   ExternalLink,
   Newspaper,
 } from "lucide-react";
+import { TrackedOutboundLink, TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import { ContactEmailLink } from "@/components/contact-email-link";
 import { contact, whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { cn } from "@/lib/utils";
@@ -218,15 +218,16 @@ export default function AboutPage() {
           <p className="mx-auto mt-5 max-w-lg text-center text-xs leading-relaxed text-slate-light sm:mt-6 sm:text-sm">
             Used by students preparing for Cambridge O Level English exams
           </p>
-          <a
+          <TrackedOutboundLink
             href={contact.youtube}
+            channel="youtube"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-crimson underline-offset-4 transition-colors hover:text-rose sm:mt-6"
           >
             Open full channel
             <ExternalLink className="h-4 w-4 opacity-80" aria-hidden />
-          </a>
+          </TrackedOutboundLink>
         </div>
       </section>
 
@@ -246,8 +247,10 @@ export default function AboutPage() {
               contact.facebook.trim() ? "lg:max-w-none lg:grid-cols-4" : "lg:mx-auto lg:max-w-5xl lg:grid-cols-3"
             )}
           >
-            <a
+            <TrackedWhatsAppLink
               href={whatsAppGroupUrl()}
+              location="about_connect"
+              variant="group"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -265,10 +268,11 @@ export default function AboutPage() {
                 Join the WhatsApp Group
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
               </span>
-            </a>
+            </TrackedWhatsAppLink>
 
-            <a
+            <TrackedOutboundLink
               href={contact.youtube}
+              channel="youtube"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -283,14 +287,15 @@ export default function AboutPage() {
               <p className="mt-2 flex-1 text-sm leading-relaxed text-slate">
                 Watch full lessons and breakdowns
               </p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-crimson">
+              <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-crimson">
                 Visit channel
                 <ExternalLink className="h-4 w-4 opacity-70" aria-hidden />
               </span>
-            </a>
+            </TrackedOutboundLink>
 
-            <a
+            <TrackedOutboundLink
               href={contact.instagram}
+              channel="instagram"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -305,15 +310,16 @@ export default function AboutPage() {
               <p className="mt-2 flex-1 text-sm leading-relaxed text-slate">
                 Daily tips and writing insights
               </p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-crimson">
+              <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-crimson">
                 Follow on Instagram
                 <ExternalLink className="h-4 w-4 opacity-70" aria-hidden />
               </span>
-            </a>
+            </TrackedOutboundLink>
 
             {contact.facebook.trim() ? (
-              <a
+              <TrackedOutboundLink
                 href={contact.facebook.trim()}
+                channel="facebook"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
@@ -328,11 +334,11 @@ export default function AboutPage() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-slate">
                   Updates and announcements
                 </p>
-                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-crimson">
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-crimson">
                   Open Facebook
                   <ExternalLink className="h-4 w-4 opacity-70" aria-hidden />
                 </span>
-              </a>
+              </TrackedOutboundLink>
             ) : null}
           </div>
         </div>
@@ -353,23 +359,27 @@ export default function AboutPage() {
             <ContactEmailLink variant="onDark" className="font-medium" />
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
+            <TrackedWhatsAppLink
               href={whatsAppUrl()}
+              location="about_footer_cta"
+              variant="direct"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md sm:w-auto"
             >
               Book a Clarity Call
               <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
+            </TrackedWhatsAppLink>
+            <TrackedWhatsAppLink
               href={whatsAppGroupUrl()}
+              location="about_footer_cta"
+              variant="group"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 sm:w-auto"
             >
               Join WhatsApp group
-            </Link>
+            </TrackedWhatsAppLink>
           </div>
         </div>
       </section>

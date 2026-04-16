@@ -11,6 +11,7 @@ import {
 import { listMarketingCourses } from "@/lib/course-offerings";
 import { courses, siteConfig } from "@/lib/data";
 import { getSettings } from "@/lib/admin/store";
+import { TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import { ContactEmailLink } from "@/components/contact-email-link";
 import { whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
 import { CourseCard } from "@/components/course-card";
@@ -18,6 +19,17 @@ import { WorkshopPromoSection } from "@/components/workshop-promo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    type: "website",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
 };
 
 const sectionKicker = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground";
@@ -57,23 +69,27 @@ export default async function HomePage() {
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link
+                <TrackedWhatsAppLink
                   href={whatsAppUrl()}
+                  location="home_hero"
+                  variant="direct"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_12px_rgba(0,0,0,0.12)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_18px_rgba(0,0,0,0.15)]"
                 >
                   Book a Clarity Call
                   <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
+                </TrackedWhatsAppLink>
+                <TrackedWhatsAppLink
                   href={whatsAppGroupUrl()}
+                  location="home_hero"
+                  variant="group"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-[2px] transition-all hover:border-white/35 hover:bg-white/16"
                 >
                   Join WhatsApp group
-                </Link>
+                </TrackedWhatsAppLink>
               </div>
               <Link
                 href="/courses"
@@ -233,23 +249,27 @@ export default async function HomePage() {
             Or write to <ContactEmailLink variant="onDark" className="font-medium" />
           </p>
           <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
-            <Link
+            <TrackedWhatsAppLink
               href={whatsAppUrl()}
+              location="home_footer_cta"
+              variant="direct"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_14px_rgba(0,0,0,0.2)] transition-all hover:bg-brand-accent sm:min-w-[200px]"
             >
               Book a Clarity Call
               <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
+            </TrackedWhatsAppLink>
+            <TrackedWhatsAppLink
               href={whatsAppGroupUrl()}
+              location="home_footer_cta"
+              variant="group"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-white/18 sm:min-w-[200px]"
             >
               Join WhatsApp group
-            </Link>
+            </TrackedWhatsAppLink>
           </div>
           <p className="mt-8">
             <Link

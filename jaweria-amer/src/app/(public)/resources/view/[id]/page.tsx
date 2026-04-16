@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
+import { ResourceViewTracker } from "@/components/analytics/resource-view-tracker";
 import { resources } from "@/lib/data";
 import { publicFileAbsoluteUrl } from "@/lib/public-asset-url";
 
@@ -15,10 +16,23 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { id } = await params;
   const resource = resources.find((r) => r.id === id);
   if (!resource) return { title: "Resource" };
+  const path = `/resources/view/${resource.id}`;
   return {
     title: `${resource.title} | Resources`,
     description: resource.description,
-    robots: { index: false, follow: true },
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${resource.title} | Resources`,
+      description: resource.description,
+      type: "website",
+      url: path,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${resource.title} | Resources`,
+      description: resource.description,
+    },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -34,6 +48,7 @@ export default async function ResourceViewPage({ params }: { params: Params }) {
 
   return (
     <div className="min-h-screen bg-cream">
+      <ResourceViewTracker id={resource.id} title={resource.title} />
       <section className="border-b border-border/70 bg-crimson pb-8 pt-24 text-white sm:pt-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Link

@@ -96,7 +96,9 @@ Copy `.env.example` to `.env.local` for development. On Vercel, set the same key
 
 | Variable | Scope | Description |
 |----------|--------|-------------|
-| `NEXT_PUBLIC_SITE_URL` | Public | Site origin, no trailing slash (e.g. `https://www.yourdomain.com`). Used for metadata and canonical URLs. |
+| `NEXT_PUBLIC_SITE_URL` | Public | Site origin, no trailing slash (e.g. `https://www.yourdomain.com`). Used for metadata, canonical URLs, `sitemap.xml`, and `robots.txt`. |
+| `NEXT_PUBLIC_GA_ID` | Public | Optional. GA4 measurement ID (e.g. `G-XXXXXXXXXX`). When set in **production**, the site loads GA4 and client helpers in `src/lib/analytics.ts` send events. |
+| `GOOGLE_SITE_VERIFICATION` | Server | Optional. Search Console verification string (the `content` value from the HTML tag method). Rendered in root metadata when set. |
 | `SESSION_SECRET` | Server | Admin session signing. **Required in production** for `/admin`. Prefer a long random value (e.g. `openssl rand -base64 32`). |
 | `ADMIN_EMAIL` | Server | `/admin/login` email |
 | `ADMIN_PASSWORD` | Server | `/admin/login` password (use a strong, unique value) |
@@ -104,6 +106,29 @@ Copy `.env.example` to `.env.local` for development. On Vercel, set the same key
 WhatsApp number, default message, and public contact fields live in `src/lib/data.ts`, not in env vars.
 
 Do not commit `.env` or `.env.local`. `.env.example` uses placeholders only.
+
+### How to connect analytics
+
+1. Create a GA4 property and copy the **Measurement ID** (format `G-XXXXXXXXXX`).
+2. In your host (e.g. Vercel), set `NEXT_PUBLIC_GA_ID` to that value for **Production**.
+3. Redeploy. Events are sent from `src/lib/analytics.ts` only when GA is configured and `gtag` is available (no-op in development and when the variable is unset).
+
+### How to verify Search Console
+
+1. In [Google Search Console](https://search.google.com/search-console), choose the **HTML tag** verification method and copy the **content** attribute value only.
+2. Set `GOOGLE_SITE_VERIFICATION` to that string in your deployment environment (server-side; do not prefix with `NEXT_PUBLIC_`).
+3. Redeploy, then click **Verify** in Search Console.
+
+### Environment variables needed (checklist)
+
+For a typical production handoff, set at least:
+
+- `NEXT_PUBLIC_SITE_URL` — canonical base URL (required for accurate SEO URLs).
+- `SESSION_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` — if you use `/admin`.
+- `NEXT_PUBLIC_GA_ID` — when you are ready to enable GA4.
+- `GOOGLE_SITE_VERIFICATION` — when you connect Search Console.
+
+Optional: `RESEND_API_KEY`, `RESEND_FROM` for password reset email (see `.env.example`).
 
 ## Deployment (Vercel)
 
@@ -137,7 +162,6 @@ After material edits, run `npm run build` to confirm types and static generation
 
 - Wire vault downloads to real PDFs or official CAIE links.
 - Replace the About page portrait placeholder with a production image.
-- Add `sitemap.ts` / `robots.ts` if you want more control than layout metadata alone.
 - Stronger admin auth (e.g. SSO) if multiple operators need access.
 - Automated smoke or E2E tests on deploy.
 

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { StructuredData } from "@/components/analytics/structured-data";
 import { siteConfig } from "@/lib/data";
 import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
@@ -14,36 +16,41 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: getSiteUrl(),
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  keywords: [
-    "O Level English Teacher Karachi",
-    "Best O Level English Teacher Karachi",
-    "CAIE English Tutor",
-    "Cambridge English Karachi",
-    "O Level English 1123",
-    "English Language Tuition Karachi",
-  ],
-  authors: [{ name: siteConfig.name }],
-  openGraph: {
-    siteName: siteConfig.name,
-    title: siteConfig.title,
+export async function generateMetadata(): Promise<Metadata> {
+  const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+
+  return {
+    metadataBase: getSiteUrl(),
+    title: {
+      default: siteConfig.title,
+      template: `%s | ${siteConfig.name}`,
+    },
     description: siteConfig.description,
-    type: "website",
-    locale: "en_US",
-    url: "/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
-  },
-};
+    keywords: [
+      "O Level English Teacher Karachi",
+      "Best O Level English Teacher Karachi",
+      "CAIE English Tutor",
+      "Cambridge English Karachi",
+      "O Level English 1123",
+      "English Language Tuition Karachi",
+    ],
+    authors: [{ name: siteConfig.name }],
+    openGraph: {
+      siteName: siteConfig.name,
+      title: siteConfig.title,
+      description: siteConfig.description,
+      type: "website",
+      locale: "en_US",
+      url: "/",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteConfig.title,
+      description: siteConfig.description,
+    },
+    ...(googleVerification ? { verification: { google: googleVerification } } : {}),
+  };
+}
 
 export default function RootLayout({
   children,
@@ -55,7 +62,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <GoogleAnalytics />
+        <StructuredData />
+        {children}
+      </body>
     </html>
   );
 }
