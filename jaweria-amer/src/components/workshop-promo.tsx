@@ -11,14 +11,15 @@ export function WorkshopPromoSection() {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 pb-3 pt-20 sm:px-6 sm:pt-24 lg:px-8">
-      <div className="overflow-hidden rounded-xl border border-border/60 shadow-[0_2px_12px_rgba(34,16,18,0.06)] motion-safe:animate-in motion-safe:fade-in motion-safe:duration-500">
+      <div className="overflow-hidden rounded-2xl border border-border/60 shadow-[0_2px_12px_rgba(34,16,18,0.06)] motion-safe:animate-in motion-safe:fade-in motion-safe:duration-500">
         <div className="relative aspect-video w-full">
           <Image
             src="/images/workshop-banner.jpg"
             alt="Miss Jay O Level English Workshop — 5 to 7 day online and physical programme, syllabus revision, mock exams, and contact details on banner"
             fill
             priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1280px"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, 1200px"
             className="object-cover object-left sm:object-center"
           />
         </div>

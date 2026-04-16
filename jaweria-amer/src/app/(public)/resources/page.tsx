@@ -46,7 +46,7 @@ export default function ResourcesPage() {
       <section className="border-b border-border/70 bg-white py-12 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
-            <div className="flex flex-col justify-center rounded-2xl border border-border/80 bg-cream/40 p-8 shadow-sm sm:p-10">
+            <div className="flex flex-col justify-center rounded-2xl border border-border/80 bg-cream/40 p-8 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-10">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-crimson text-white">
                 <PlayCircle className="h-5 w-5" aria-hidden />
               </div>
@@ -70,14 +70,20 @@ export default function ResourcesPage() {
               </TrackedOutboundLink>
             </div>
 
-            <div className="flex flex-col justify-between rounded-2xl border border-rose/25 bg-gradient-to-br from-crimson via-crimson to-crimson-light p-8 text-white shadow-md sm:p-10">
+            <div
+              className="flex flex-col justify-between rounded-2xl border border-white/15 p-8 text-white shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-10"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(198, 40, 57, 0.95), rgba(233, 30, 99, 0.85))",
+              }}
+            >
               <div>
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-rose/20 text-rose">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-white">
                   <FolderOpen className="h-5 w-5" aria-hidden />
                 </div>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose/90">Full vault</p>
-                <h2 className="mt-2 font-serif text-2xl font-bold sm:text-3xl">Full Resource Pack</h2>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/80">Full vault</p>
+                <h2 className="mt-2 font-serif text-2xl font-bold text-white sm:text-3xl">Full Resource Pack</h2>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-white/90">
                   The curated folder bundles extended handouts and session materials in one place —
                   for students who want the complete archive alongside this hub.
                 </p>
@@ -87,7 +93,7 @@ export default function ResourcesPage() {
                 channel="drive"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl bg-rose px-5 py-3 text-sm font-semibold text-crimson shadow-sm transition-all hover:bg-rose-dark hover:text-white"
+                className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-white/25 bg-white/95 px-5 py-3 text-sm font-semibold text-crimson shadow-sm transition-[background-color,color,box-shadow] duration-200 hover:border-white/40 hover:bg-white hover:shadow-md"
               >
                 Open full pack
                 <ExternalLink className="h-4 w-4 opacity-90" aria-hidden />
