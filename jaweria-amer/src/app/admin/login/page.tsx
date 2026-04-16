@@ -8,6 +8,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { loginAction } from "@/lib/admin/actions";
 import { contact } from "@/lib/contact";
+import { siteConfig } from "@/lib/data";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -34,7 +35,9 @@ export default function LoginPage() {
             <Lock className="w-7 h-7 text-rose" />
           </div>
           <h1 className="font-serif text-2xl font-bold text-white">Admin Portal</h1>
-          <p className="text-white/50 text-sm mt-1">Jaweria Amer - English Specialist</p>
+          <p className="mx-auto mt-1 max-w-xs text-sm leading-snug text-white/50">
+            {siteConfig.name} — {siteConfig.brandSubtitle}
+          </p>
         </div>
 
         <form action={action} className="bg-white rounded-xl p-6 shadow-xl space-y-4">

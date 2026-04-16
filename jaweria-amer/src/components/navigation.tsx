@@ -45,11 +45,11 @@ export function Navigation() {
             </span>
             <span
               className={cn(
-                "text-[10px] font-medium uppercase tracking-[0.22em] transition-colors sm:text-[11px]",
+                "max-w-[11.5rem] text-[10px] font-medium leading-snug tracking-wide transition-colors sm:max-w-[16rem] sm:text-[11px]",
                 isTransparent ? "text-white/55" : "text-slate-light"
               )}
             >
-              English Specialist
+              {siteConfig.brandSubtitle}
             </span>
           </Link>
 

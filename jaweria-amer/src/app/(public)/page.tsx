@@ -56,8 +56,8 @@ export default async function HomePage() {
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/75 sm:mb-6 sm:text-xs">
-              O Level English Specialist
+            <p className="mb-5 max-w-xl text-[11px] font-semibold leading-snug tracking-wide text-white/75 sm:mb-6 sm:text-xs">
+              {siteConfig.brandSubtitle}
             </p>
             <h1 className="mb-6 font-serif text-[2.1rem] font-semibold leading-[1.12] tracking-tight text-white sm:text-4xl sm:leading-[1.1] lg:text-[2.65rem] lg:leading-[1.08]">
               Master CAIE English

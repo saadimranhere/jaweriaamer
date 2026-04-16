@@ -11,7 +11,9 @@ import {
 } from "lucide-react";
 import { TrackedOutboundLink, TrackedWhatsAppLink } from "@/components/analytics/tracked-links";
 import { ContactEmailLink } from "@/components/contact-email-link";
+import { AboutLatestYoutube } from "@/components/about-latest-youtube";
 import { contact, whatsAppGroupUrl, whatsAppUrl } from "@/lib/contact";
+import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const channelCardBase =
@@ -71,9 +73,8 @@ export default function AboutPage() {
             Jaweria Amer
           </h1>
           <p className="max-w-xl leading-relaxed text-white/70">
-            Cambridge English specialist with international education
-            experience, dedicated to structured mentorship that builds
-            independent thinkers.
+            Cambridge English mentor with international education experience,
+            dedicated to structured mentorship that builds independent thinkers.
           </p>
         </div>
       </section>
@@ -93,8 +94,8 @@ export default function AboutPage() {
                   <p className="font-serif text-lg font-semibold text-ink">
                     Jaweria Amer
                   </p>
-                  <p className="text-xs text-slate-light tracking-wider uppercase mt-1">
-                    O Level English Specialist
+                  <p className="mt-1 max-w-[14rem] text-xs leading-snug tracking-wide text-slate-light">
+                    {siteConfig.brandSubtitle}
                   </p>
                 </div>
               </div>
@@ -203,18 +204,7 @@ export default function AboutPage() {
             Full lessons and paper-style breakdowns on YouTube — structured, calm, and aligned to how
             Cambridge marks.
           </p>
-          <div className="mx-auto mt-10 w-full max-w-3xl overflow-hidden rounded-2xl border border-border/70 bg-muted/30 shadow-[0_8px_32px_rgba(34,16,18,0.08)]">
-            <div className="relative aspect-video w-full">
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src={`https://www.youtube-nocookie.com/embed/${contact.youtubeFeaturedVideoId}`}
-                title="Featured lesson — English with Jaweria on YouTube"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-          </div>
+          <AboutLatestYoutube />
           <p className="mx-auto mt-5 max-w-lg text-center text-xs leading-relaxed text-slate-light sm:mt-6 sm:text-sm">
             Used by students preparing for Cambridge O Level English exams
           </p>
