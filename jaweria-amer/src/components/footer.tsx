@@ -27,9 +27,6 @@ export function Footer() {
               <p className="font-serif text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-rose">
                 {siteConfig.name}
               </p>
-              <p className="mt-1 max-w-xs text-[10px] font-medium leading-snug tracking-wide text-white/55">
-                {siteConfig.brandSubtitle}
-              </p>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-white/65">
               Rubric-driven Cambridge English mentorship that builds clarity,

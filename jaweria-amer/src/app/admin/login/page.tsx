@@ -35,9 +35,7 @@ export default function LoginPage() {
             <Lock className="w-7 h-7 text-rose" />
           </div>
           <h1 className="font-serif text-2xl font-bold text-white">Admin Portal</h1>
-          <p className="mx-auto mt-1 max-w-xs text-sm leading-snug text-white/50">
-            {siteConfig.name} — {siteConfig.brandSubtitle}
-          </p>
+          <p className="mx-auto mt-1 text-sm text-white/50">{siteConfig.name}</p>
         </div>
 
         <form action={action} className="bg-white rounded-xl p-6 shadow-xl space-y-4">

@@ -34,23 +34,14 @@ export function Navigation() {
     >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between sm:h-[4.25rem]">
-          <Link href="/" className="flex flex-col gap-0.5">
-            <span
-              className={cn(
-                "font-serif text-lg font-semibold tracking-tight transition-colors sm:text-xl",
-                isTransparent ? "text-white" : "text-ink"
-              )}
-            >
-              Jaweria Amer
-            </span>
-            <span
-              className={cn(
-                "max-w-[11.5rem] text-[10px] font-medium leading-snug tracking-wide transition-colors sm:max-w-[16rem] sm:text-[11px]",
-                isTransparent ? "text-white/55" : "text-slate-light"
-              )}
-            >
-              {siteConfig.brandSubtitle}
-            </span>
+          <Link
+            href="/"
+            className={cn(
+              "font-serif text-lg font-semibold tracking-tight transition-colors sm:text-xl",
+              isTransparent ? "text-white" : "text-ink"
+            )}
+          >
+            {siteConfig.name}
           </Link>
 
           <div className="hidden items-center gap-10 md:flex">

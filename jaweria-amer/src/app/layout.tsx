@@ -21,6 +21,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: getSiteUrl(),
+    icons: {
+      icon: "/favicon.png",
+      shortcut: "/favicon.png",
+      apple: "/favicon.png",
+    },
     title: {
       default: siteConfig.title,
       template: `%s | ${siteConfig.name}`,
@@ -42,11 +47,20 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       locale: "en_US",
       url: "/",
+      images: [
+        {
+          url: "/favicon.png",
+          width: 512,
+          height: 512,
+          alt: `${siteConfig.name} — Miss Jay`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: siteConfig.title,
       description: siteConfig.description,
+      images: ["/favicon.png"],
     },
     ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   };

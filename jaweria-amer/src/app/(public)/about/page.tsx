@@ -70,7 +70,7 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="mb-4 max-w-2xl font-serif text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.35rem]">
-            Jaweria Amer
+            {siteConfig.name}
           </h1>
           <p className="max-w-xl leading-relaxed text-white/70">
             Cambridge English mentor with international education experience,
@@ -92,10 +92,10 @@ export default function AboutPage() {
                     </span>
                   </div>
                   <p className="font-serif text-lg font-semibold text-ink">
-                    Jaweria Amer
+                    {siteConfig.name}
                   </p>
-                  <p className="mt-1 max-w-[14rem] text-xs leading-snug tracking-wide text-slate-light">
-                    {siteConfig.brandSubtitle}
+                  <p className="mt-1 text-xs leading-snug text-slate-light">
+                    Cambridge English mentor
                   </p>
                 </div>
               </div>
