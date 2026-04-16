@@ -9,8 +9,8 @@ export const contact = {
   whatsapp: "923253708069",
   whatsappGroup: "https://chat.whatsapp.com/G5sHrVqzo7NCSUMhSh9w3U",
   youtube: "https://www.youtube.com/@englishwithjaweria",
-  /** Channel ID for @englishwithjaweria — used for uploads embed (latest video). */
-  youtubeChannelId: "UCX7iH9axfDiyLrMdoC0HBiQ",
+  /** Stable featured lesson for the About page embed (`youtube.com/watch?v=…` ID). */
+  youtubeFeaturedVideoId: "LzuHkJ4QfCw",
   drive: "https://drive.google.com/drive/folders/1B3MN_5TiHfknp6Ao4BwlFRlmc89F1AHF",
   instagram: "https://instagram.com/englishwithjaweria",
   /** Public Facebook page — leave empty to hide the Facebook card on marketing pages. */
@@ -44,8 +44,7 @@ export function workshopRegisterUrl(): string {
   return whatsAppUrl(contact.messageWorkshopRegister);
 }
 
-/** Channel uploads embed (newest first). `autoplay=0`. */
-export function youtubeLatestEmbedSrc(): string {
-  const id = contact.youtubeChannelId;
-  return `https://www.youtube.com/embed?listType=user_uploads&list=${encodeURIComponent(id)}&autoplay=0`;
+/** Privacy-enhanced single-video embed for marketing (no playlist / uploads params). */
+export function youtubeFeaturedEmbedSrc(): string {
+  return `https://www.youtube-nocookie.com/embed/${contact.youtubeFeaturedVideoId}`;
 }
