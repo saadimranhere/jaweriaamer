@@ -45,7 +45,7 @@ export function WorkshopPromoSection() {
           variant="direct"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.15)] focus-visible:ring-2 focus-visible:ring-ring/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all duration-200 ease-out hover:scale-[1.02] hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.15)] active:scale-100 focus-visible:ring-2 focus-visible:ring-ring/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:hover:scale-100"
         >
           Reserve via WhatsApp
           <ArrowRight className="size-4 shrink-0" aria-hidden />

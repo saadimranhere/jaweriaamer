@@ -15,7 +15,7 @@ const categoryColors: Record<string, string> = {
 
 export function CourseCard({ course }: { course: Course }) {
   return (
-    <Card className="group overflow-hidden border-border/70 motion-reduce:hover:translate-y-0">
+    <Card className="group overflow-hidden border-border/70 motion-reduce:hover:translate-y-0 hover:-translate-y-1 hover:shadow-[0_14px_44px_rgba(34,16,18,0.1)] motion-reduce:hover:shadow-[0_1px_3px_rgba(34,16,18,0.04)]">
       <CardContent className="flex h-full flex-col p-6 sm:p-7">
         <div className="mb-5 flex items-start justify-between gap-3">
           <Badge
@@ -52,7 +52,7 @@ export function CourseCard({ course }: { course: Course }) {
             variant="direct"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.18)]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-medium text-primary-foreground shadow-[0_1px_2px_rgba(34,16,18,0.08)] transition-all duration-200 ease-out hover:scale-[1.02] hover:bg-brand-accent hover:shadow-[0_4px_14px_rgba(112,20,20,0.18)] active:scale-100 motion-reduce:hover:scale-100"
           >
             <MessageCircle className="h-4 w-4" aria-hidden />
             Enquire on WhatsApp

@@ -73,7 +73,8 @@
 
 :root {
   --background: #fafaf9;
-  --foreground: #2d181c;
+  /* Slightly softer than pure ink — calmer body hierarchy */
+  --foreground: #34262a;
   --card: #ffffff;
   --card-foreground: #2d181c;
   --popover: #ffffff;
@@ -124,6 +125,50 @@
   }
   h1 {
     @apply text-balance;
+  }
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Subtle section entrance — no layout shift; disabled when user prefers reduced motion */
+.premium-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes premium-section-in {
+    from {
+      opacity: 0;
+      transform: translateY(1.15rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .premium-reveal {
+    opacity: 0;
+    animation: premium-section-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .premium-reveal-delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .premium-reveal-delay-2 {
+    animation-delay: 0.18s;
+  }
+
+  .premium-reveal-delay-3 {
+    animation-delay: 0.26s;
+  }
+
+  .premium-reveal-delay-4 {
+    animation-delay: 0.34s;
   }
 }
 

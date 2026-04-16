@@ -32,9 +32,11 @@ export const metadata: Metadata = {
   },
 };
 
-const sectionKicker = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground";
-const sectionTitle = "font-serif text-2xl font-semibold leading-tight text-ink sm:text-3xl lg:text-[2rem] lg:leading-snug";
-const bodyLead = "text-base leading-relaxed text-slate sm:text-[1.05rem] sm:leading-relaxed";
+const sectionKicker =
+  "text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground";
+const sectionTitle =
+  "font-serif text-2xl font-semibold leading-[1.18] tracking-tight text-ink sm:text-3xl lg:text-[2.05rem] lg:leading-[1.16]";
+const bodyLead = "text-base leading-[1.7] text-slate sm:text-[1.0625rem] sm:leading-[1.72]";
 
 export default async function HomePage() {
   const featuredCourses = listMarketingCourses(courses).filter((c) => c.featured);
@@ -56,18 +58,18 @@ export default async function HomePage() {
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <p className="mb-5 max-w-xl text-[11px] font-semibold leading-snug tracking-wide text-white/75 sm:mb-6 sm:text-xs">
+            <p className="premium-reveal mb-5 max-w-xl text-[11px] font-semibold leading-snug tracking-wide text-white/75 sm:mb-6 sm:text-xs">
               {siteConfig.brandSubtitle}
             </p>
-            <h1 className="mb-6 font-serif text-[2.1rem] font-semibold leading-[1.12] tracking-tight text-white sm:text-4xl sm:leading-[1.1] lg:text-[2.65rem] lg:leading-[1.08]">
+            <h1 className="premium-reveal premium-reveal-delay-1 mb-6 font-serif text-[2.35rem] font-semibold leading-[1.08] tracking-tight text-white sm:text-[2.55rem] sm:leading-[1.06] lg:text-[2.95rem] lg:leading-[1.04]">
               Master CAIE English
               <span className="mt-2 block font-normal text-white/90">with Clarity and Care</span>
             </h1>
-            <p className="mb-9 max-w-xl text-base leading-relaxed text-white/72 sm:mb-11 sm:text-lg sm:leading-relaxed">
+            <p className="premium-reveal premium-reveal-delay-2 mb-9 max-w-xl text-base leading-[1.68] text-white/72 sm:mb-11 sm:text-lg sm:leading-[1.66]">
               Rubric-driven instruction, calm accountability, and mentorship that builds independent thinkers.
               Structured practice that holds up on exam day.
             </p>
-            <div className="flex flex-col gap-4">
+            <div className="premium-reveal premium-reveal-delay-3 flex flex-col gap-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <TrackedWhatsAppLink
                   href={whatsAppUrl()}
@@ -75,7 +77,7 @@ export default async function HomePage() {
                   variant="direct"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_12px_rgba(0,0,0,0.12)] transition-all hover:bg-brand-accent hover:shadow-[0_4px_18px_rgba(0,0,0,0.15)]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_12px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out hover:scale-[1.02] hover:bg-brand-accent hover:shadow-[0_4px_18px_rgba(0,0,0,0.15)] active:scale-100 motion-reduce:hover:scale-100"
                 >
                   Book a Clarity Call
                   <ArrowRight className="h-4 w-4" />
@@ -86,7 +88,7 @@ export default async function HomePage() {
                   variant="group"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-[2px] transition-all hover:border-white/35 hover:bg-white/16"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-[2px] transition-all duration-200 ease-out hover:scale-[1.02] hover:border-white/35 hover:bg-white/16 active:scale-100 motion-reduce:hover:scale-100"
                 >
                   Join WhatsApp group
                 </TrackedWhatsAppLink>
@@ -103,10 +105,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Stats — tighter vertical rhythm */}
       <section className="border-b border-border/70 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
-          <div className="grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-12">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+          <div className="premium-reveal grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-12">
             {settings.stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="mb-1.5 font-serif text-3xl font-semibold tabular-nums text-crimson sm:text-[2.1rem]">
@@ -119,10 +121,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Value proposition */}
-      <section className="bg-cream py-20 sm:py-28">
+      {/* Value proposition — generous breathing room */}
+      <section className="bg-cream py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-14 max-w-2xl text-center sm:mb-20">
+          <div className="premium-reveal mx-auto mb-14 max-w-2xl text-center sm:mb-20">
             <p className={`${sectionKicker} mb-3`}>Why Students Choose Us</p>
             <h2 className={`${sectionTitle} mb-5`}>Structure, Not Stress</h2>
             <p className={bodyLead}>
@@ -156,7 +158,7 @@ export default async function HomePage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-border/60 bg-white p-7 shadow-[0_1px_3px_rgba(34,16,18,0.04)] transition-[border-color,box-shadow] duration-300 hover:border-border hover:shadow-[0_6px_24px_rgba(34,16,18,0.06)]"
+                className="rounded-xl border border-border/60 bg-white p-7 shadow-[0_1px_3px_rgba(34,16,18,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-border/80 hover:shadow-[0_12px_36px_rgba(34,16,18,0.09)] motion-reduce:hover:translate-y-0"
               >
                 <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
                   <item.icon className="h-5 w-5 text-brand" aria-hidden />
@@ -169,10 +171,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured courses */}
-      <section className="bg-white py-20 sm:py-28">
+      {/* Featured courses — slightly tighter than value block */}
+      <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 flex items-end justify-between gap-6 sm:mb-16">
+          <div className="premium-reveal mb-12 flex items-end justify-between gap-6 sm:mb-16">
             <div>
               <p className={`${sectionKicker} mb-3`}>Programmes</p>
               <h2 className={sectionTitle}>Featured Courses</h2>
@@ -205,9 +207,9 @@ export default async function HomePage() {
       </section>
 
       {/* Roadmap */}
-      <section className="bg-cream py-20 sm:py-28">
+      <section className="bg-cream py-20 sm:py-[6.75rem]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-14 max-w-2xl text-center sm:mb-20">
+          <div className="premium-reveal mx-auto mb-14 max-w-2xl text-center sm:mb-20">
             <p className={`${sectionKicker} mb-3`}>The Method</p>
             <h2 className={`${sectionTitle} mb-5`}>Your Step-by-Step Roadmap</h2>
             <p className={bodyLead}>
@@ -236,12 +238,12 @@ export default async function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-crimson-dark/20 bg-gradient-to-b from-crimson to-crimson-dark py-20 sm:py-28">
-        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 font-serif text-2xl font-semibold leading-tight text-white sm:text-3xl lg:text-[2rem]">
+      <section className="border-t border-crimson-dark/20 bg-gradient-to-b from-crimson to-crimson-dark py-[4.75rem] sm:py-28">
+        <div className="premium-reveal mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 font-serif text-2xl font-semibold leading-[1.2] tracking-tight text-white sm:text-3xl lg:text-[2rem]">
             Ready to Build a Clear Plan?
           </h2>
-          <p className="mx-auto mb-4 max-w-lg leading-relaxed text-white/75">
+          <p className="mx-auto mb-4 max-w-lg leading-[1.65] text-white/75">
             Book a short clarity call to discuss your goals, current level, and the programme that fits. No pressure,
             no commitment.
           </p>
@@ -255,7 +257,7 @@ export default async function HomePage() {
               variant="direct"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_14px_rgba(0,0,0,0.2)] transition-all hover:bg-brand-accent sm:min-w-[200px]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-[0_2px_14px_rgba(0,0,0,0.2)] transition-all duration-200 ease-out hover:scale-[1.02] hover:bg-brand-accent active:scale-100 motion-reduce:hover:scale-100 sm:min-w-[200px]"
             >
               Book a Clarity Call
               <ArrowRight className="h-4 w-4" />
@@ -266,7 +268,7 @@ export default async function HomePage() {
               variant="group"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-white/18 sm:min-w-[200px]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white transition-all duration-200 ease-out hover:scale-[1.02] hover:bg-white/18 active:scale-100 motion-reduce:hover:scale-100 sm:min-w-[200px]"
             >
               Join WhatsApp group
             </TrackedWhatsAppLink>

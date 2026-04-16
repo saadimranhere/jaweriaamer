@@ -17,7 +17,7 @@ import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const channelCardBase =
-  "group flex flex-col rounded-2xl p-7 transition-all duration-200 sm:p-8 hover:-translate-y-0.5";
+  "group flex flex-col rounded-2xl p-7 transition-all duration-300 ease-out sm:p-8 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(34,16,18,0.08)] motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-none";
 
 function IconWhatsApp({ className }: { className?: string }) {
   return (
@@ -64,27 +64,27 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-crimson to-crimson-dark pb-16 pt-28 sm:pb-20 sm:pt-36">
+      <section className="bg-gradient-to-b from-crimson to-crimson-dark pb-20 pt-28 sm:pb-24 sm:pt-36">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 sm:text-xs">
+          <p className="premium-reveal mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 sm:text-xs">
             About
           </p>
-          <h1 className="mb-4 max-w-2xl font-serif text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.35rem]">
+          <h1 className="premium-reveal premium-reveal-delay-1 mb-5 max-w-3xl font-serif text-3xl font-semibold leading-[1.12] tracking-tight text-white sm:text-[2.35rem] sm:leading-[1.1] lg:text-[2.65rem] lg:leading-[1.08]">
             {siteConfig.name}
           </h1>
-          <p className="max-w-xl leading-relaxed text-white/70">
+          <p className="premium-reveal premium-reveal-delay-2 max-w-xl text-base leading-[1.65] text-white/72 sm:text-lg sm:leading-[1.62]">
             Cambridge English mentor with international education experience,
             dedicated to structured mentorship that builds independent thinkers.
           </p>
         </div>
       </section>
 
-      <section className="bg-cream py-16 sm:py-24">
+      <section className="bg-cream py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-20">
             {/* Portrait placeholder */}
             <div className="lg:col-span-2">
-              <div className="aspect-[3/4] bg-crimson/5 rounded-2xl border border-border/60 flex items-center justify-center">
+              <div className="flex aspect-[3/4] items-center justify-center rounded-2xl border border-border/60 bg-crimson/5 shadow-[0_1px_3px_rgba(34,16,18,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(34,16,18,0.07)]">
                 <div className="text-center px-8">
                   <div className="w-24 h-24 rounded-full bg-crimson/10 flex items-center justify-center mx-auto mb-4">
                     <span className="font-serif text-3xl font-bold text-crimson">
@@ -104,24 +104,24 @@ export default function AboutPage() {
             {/* Bio */}
             <div className="lg:col-span-3 space-y-8">
               <div>
-                <h2 className="mb-4 font-serif text-xl font-semibold text-ink sm:text-2xl">
+                <h2 className="mb-4 font-serif text-xl font-semibold tracking-tight text-ink sm:text-2xl">
                   Teaching Philosophy
                 </h2>
-                <div className="space-y-4 text-slate leading-relaxed">
-                  <p>
+                <div className="space-y-5 text-slate">
+                  <p className="border-l-2 border-rose/25 pl-5 text-sm leading-[1.7] sm:text-base sm:leading-[1.68]">
                     My approach is simple: reduce confusion, increase control.
                     We work with real paper patterns, build repeatable writing
                     structures, and practise under timed conditions &mdash; while
                     keeping confidence intact.
                   </p>
-                  <p>
+                  <p className="text-sm leading-[1.7] sm:text-base sm:leading-[1.68]">
                     I teach English the way high-performing students need it:
                     clear structures, precise feedback, and habits that hold up
                     on exam day. Every session is designed around Cambridge
                     marking criteria, because understanding how examiners think
                     is what changes grades.
                   </p>
-                  <p>
+                  <p className="text-sm leading-[1.7] sm:text-base sm:leading-[1.68]">
                     Having worked across education systems in Karachi, London,
                     and Athens, I bring a global perspective grounded in local
                     understanding. I know the pressures students at KGS, Nixor,
@@ -156,7 +156,7 @@ export default function AboutPage() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="bg-white rounded-xl p-5 border border-border/60"
+                    className="rounded-xl border border-border/60 bg-white p-5 shadow-[0_1px_3px_rgba(34,16,18,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-border/80 hover:shadow-[0_10px_32px_rgba(34,16,18,0.08)] motion-reduce:hover:translate-y-0"
                   >
                     <item.icon className="w-5 h-5 text-rose mb-3" />
                     <h3 className="mb-1.5 font-serif text-sm font-semibold text-ink">
@@ -170,10 +170,10 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <h2 className="mb-4 font-serif text-xl font-semibold text-ink sm:text-2xl">
+                <h2 className="mb-4 font-serif text-xl font-semibold tracking-tight text-ink sm:text-2xl">
                   What Sets This Apart
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-3.5">
                   {[
                     "Rubric-driven instruction aligned to how Cambridge actually marks",
                     "Examiner-style feedback on every piece of work",
@@ -183,8 +183,8 @@ export default function AboutPage() {
                     "No grade guarantees, no inflated claims. Just honest, consistent work",
                   ].map((item) => (
                     <div key={item} className="flex gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                      <span className="text-sm text-slate">{item}</span>
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-rose" />
+                      <span className="text-sm leading-relaxed text-slate">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -195,12 +195,12 @@ export default function AboutPage() {
       </section>
 
       {/* YouTube — authority */}
-      <section className="border-t border-border/70 bg-white py-16 sm:py-20 lg:pb-28 lg:pt-24">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="font-serif text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+      <section className="border-t border-border/70 bg-white pb-24 pt-20 sm:pb-28 sm:pt-24">
+        <div className="premium-reveal mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-serif text-2xl font-semibold leading-[1.2] tracking-tight text-ink sm:text-3xl">
             Learn directly from Jaweria
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate sm:text-base">
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-[1.65] text-slate sm:text-base sm:leading-[1.68]">
             Full lessons and paper-style breakdowns on YouTube — structured, calm, and aligned to how
             Cambridge marks.
           </p>
@@ -335,12 +335,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-b from-crimson to-crimson-dark py-20 sm:py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="mb-4 font-serif text-2xl font-semibold leading-tight text-white sm:text-3xl">
+      <section className="bg-gradient-to-b from-crimson to-crimson-dark py-[4.5rem] sm:py-24">
+        <div className="premium-reveal mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 font-serif text-2xl font-semibold leading-[1.2] tracking-tight text-white sm:text-3xl">
             Let&apos;s Start with a Conversation
           </h2>
-          <p className="text-white/70 leading-relaxed mb-6 max-w-lg mx-auto">
+          <p className="mx-auto mb-6 max-w-lg leading-[1.65] text-white/70">
             A short call to understand where you are, where you want to be, and
             whether this is the right fit. No obligation.
           </p>
@@ -355,7 +355,7 @@ export default function AboutPage() {
               variant="direct"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-rose-dark hover:shadow-md sm:w-auto"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-rose px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all duration-200 ease-out hover:scale-[1.02] hover:bg-rose-dark hover:shadow-md active:scale-100 motion-reduce:hover:scale-100 sm:w-auto"
             >
               Book a Clarity Call
               <ArrowRight className="w-4 h-4" />
@@ -366,7 +366,7 @@ export default function AboutPage() {
               variant="group"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-white/20 sm:w-auto"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all duration-200 ease-out hover:scale-[1.02] hover:bg-white/20 active:scale-100 motion-reduce:hover:scale-100 sm:w-auto"
             >
               Join WhatsApp group
             </TrackedWhatsAppLink>
