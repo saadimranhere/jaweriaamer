@@ -10,7 +10,7 @@ export const contact = {
   whatsappGroup: "https://chat.whatsapp.com/G5sHrVqzo7NCSUMhSh9w3U",
   youtube: "https://www.youtube.com/@englishwithjaweria",
   /** Stable featured lesson for the About page embed (`youtube.com/watch?v=…` ID). */
-  youtubeFeaturedVideoId: "LzuHkJ4QfCw",
+  youtubeFeaturedVideoId: "AD8WvSW3HC0",
   drive: "https://drive.google.com/drive/folders/1B3MN_5TiHfknp6Ao4BwlFRlmc89F1AHF",
   instagram: "https://instagram.com/englishwithjaweria",
   /** Public Facebook page — leave empty to hide the Facebook card on marketing pages. */
