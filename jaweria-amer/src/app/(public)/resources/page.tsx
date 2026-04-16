@@ -43,10 +43,20 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-white py-12 sm:py-14">
+      <div
+        className="pointer-events-none h-12 w-full bg-white sm:h-14"
+        style={{
+          backgroundImage: "linear-gradient(to bottom, rgba(198, 40, 57, 0.05), transparent)",
+        }}
+        aria-hidden
+      />
+
+      <section className="border-b border-border/70 bg-white pb-12 pt-8 sm:pb-14 sm:pt-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
-            <div className="flex flex-col justify-center rounded-2xl border border-border/80 bg-cream/40 p-8 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-10">
+            <div
+              className="flex flex-col justify-center rounded-2xl border border-[rgba(198,40,57,0.08)] bg-white p-8 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-10"
+            >
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-crimson text-white">
                 <PlayCircle className="h-5 w-5" aria-hidden />
               </div>
@@ -74,7 +84,7 @@ export default function ResourcesPage() {
               className="flex flex-col justify-between rounded-2xl border border-white/15 p-8 text-white shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-10"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(198, 40, 57, 0.95), rgba(233, 30, 99, 0.85))",
+                  "linear-gradient(135deg, rgba(198, 40, 57, 0.92), rgba(233, 30, 99, 0.80))",
               }}
             >
               <div>
